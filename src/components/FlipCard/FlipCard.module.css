@@ -1,0 +1,30 @@
+.flipCard {
+  position: relative;
+  width: var(--slide-containers);
+}
+
+.flipcardFront,
+.flipcardBack {
+  transition: transform 2s;
+  height: var(--slide-containers);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backface-visibility: hidden;
+  /* background-color: rgb(0, 0, 0); */
+  z-index: 1000;
+  border-radius: 5px;
+}
+
+.flipcardBack {
+  transform: rotateY(180deg);
+}
+
+.flipcardFront > img {
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

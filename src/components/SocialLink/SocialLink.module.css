@@ -1,0 +1,25 @@
+.socialIcon:hover,
+.socialIcon:active {
+  transform: scale(0.9);
+}
+
+.socialLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.socialIcon {
+  transition: color 2s;
+  width: 100%;
+}
+.prependedText {
+  margin-right: 0.5em;
+}
+.socialIcon:hover,
+.socialIcon:active,
+.socialLink:hover,
+.socialLink:active {
+  color: var(--hover-color);
+  transition: color 0s;
+}

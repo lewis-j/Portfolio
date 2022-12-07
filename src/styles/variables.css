@@ -1,0 +1,12 @@
+:root {
+  --slide-containers: 300px;
+  --neon-color: rgb(32, 32, 32);
+  --neon-box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff,
+    0 0 2rem var(--neon-color), 0 0 0.8rem var(--neon-color),
+    0 0 2.8rem var(--neon-color), inset 0 0 1.3rem var(--neon-color);
+  --neon-border: 0.2rem solid #fff;
+  --borderRadius: 5px;
+  --lightThemeColor: black;
+  --darkThemeColor: white;
+  --hover-color: purple;
+}

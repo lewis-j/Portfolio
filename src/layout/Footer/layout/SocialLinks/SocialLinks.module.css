@@ -1,0 +1,40 @@
+.socialLinks {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.socialEmail {
+  position: relative;
+}
+
+.copyClipboard {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: var(--borderRadius);
+  padding: 5px;
+}
+
+.emailLink {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: var(--borderRadius);
+  padding: 2px 5px;
+  margin: 5px 0;
+  background-color: transparent;
+}
+
+.emailIcon:hover,
+.emailIcon:active {
+  color: var(--hover-color);
+  transform: scale(0.9);
+  transition: 0s;
+}
+
+.emailLink:hover,
+.emailLink:active,
+.copyClipboard:hover,
+.copyClipboard:active {
+  color: var(--hover-color);
+  border-color: var(--hover-color);
+  transition: 0s;
+}
