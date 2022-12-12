@@ -2,23 +2,19 @@ import React, { useEffect } from "react";
 import { appendStyles } from "../../util";
 import styles from "./About.module.css";
 
-const About = ({ isExpanded }) => {
-  const expandStateStyle = isExpanded ? styles.expanded : styles.collapsed;
-  const container = !isExpanded ? styles.hideContainer : "";
+const About = () => {
+  // const expandStateStyle = isExpanded ? styles.expanded : styles.collapsed;
+  // const container = !isExpanded ? styles.hideContainer : "";
 
   useEffect(() => {
-    console.log(window.history.state);
+    document.body.style.overflow = "hidden";
 
-    if (isExpanded) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "visible";
-    }
-  }, [isExpanded]);
+    return () => (document.body.style.overflow = "visible");
+  }, []);
   return (
-    <div className={appendStyles(styles.container, container)}>
-      <div className={appendStyles(styles.about, expandStateStyle)}>
-        Testing
+    <div className={appendStyles(styles.wrapper)}>
+      <div className={appendStyles(styles.container)}>
+        <div className={styles.about}>testing</div>
       </div>
     </div>
   );

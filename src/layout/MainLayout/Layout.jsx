@@ -15,6 +15,12 @@ const Layout = ({ children, isLightTheme, offsetSegments }) => {
 
   const navLinks = [
     {
+      title: "Home",
+      linkHandler: () => {
+        navigate("/");
+      },
+    },
+    {
       title: "Projects",
       linkHandler: () => {},
     },
