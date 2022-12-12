@@ -24,7 +24,7 @@
   background-image: url("../../assets/img/space.jpg");
   background-size: contain;
   border-radius: 50%;
-  animation: scaleUp 5s ease forwards;
+  animation: scaleUp 3s ease forwards;
   z-index: 800;
 }
 

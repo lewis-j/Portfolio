@@ -8,7 +8,7 @@ import { useThemeContext } from "../../context/ThemeContext/Theme";
 
 const Layout = ({ children, offsetSegments }) => {
   const navigate = useNavigate();
-  const { transitionClass, isDark } = useThemeContext();
+  const { transitionClass, isDark, setIsDark } = useThemeContext();
   const { route } = useRouter();
 
   const containerHeight = offsetSegments * projects.length + 1;
@@ -17,6 +17,7 @@ const Layout = ({ children, offsetSegments }) => {
     {
       title: "Home",
       linkHandler: () => {
+        setIsDark(false);
         navigate("/");
       },
     },
@@ -40,11 +41,7 @@ const Layout = ({ children, offsetSegments }) => {
         {route === "/" && (
           <div
             className={styles.slidingBackground}
-            style={
-              isDark
-                ? { transform: "translateX(0)" }
-                : { transform: "translateX(100vw)" }
-            }
+            style={isDark ? { transform: "translateX(-100vw)" } : {}}
           ></div>
         )}
         <h1 className={appendStyles(styles.logo, transitionClass)}>

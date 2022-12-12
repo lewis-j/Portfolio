@@ -4,19 +4,29 @@ import styles from "./Theme.module.css";
 const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
+  const [isTransition, setIsTransition] = useState(false);
 
   useEffect(() => {
     const transitionEventHandler = (e) => {
-      console.log("transition Event", e.target.classList);
+      const isDarkclass = [...e.target.classList].some((className) => {
+        return className === styles.colorTransition;
+      });
+      if (isDarkclass) {
+        setIsTransition(false);
+      }
     };
     document.addEventListener("transitionend", transitionEventHandler);
     return () =>
       document.removeEventListener("transitionend", transitionEventHandler);
-  });
+  }, []);
+
+  useEffect(() => {
+    setIsTransition(true);
+  }, [isDark]);
 
   const themeClass = isDark ? styles.darkStyle : "";
-
-  const transitionClass = `${themeClass} ${styles.colorTransition}`;
+  const transitionState = isTransition ? styles.colorTransition : "";
+  const transitionClass = `${themeClass} ${transitionState}`;
 
   return (
     <ThemeContext.Provider

@@ -11,7 +11,6 @@ const About = () => {
     setIsDark(true);
     return () => {
       document.body.style.overflow = "visible";
-      setIsDark(false);
     };
   }, []);
   return (
