@@ -1,80 +1,133 @@
-import React, { useState } from "react";
-import { appendStyles } from "../../util";
-import projects from "../../assets/data/projects";
-import profile from "../../assets/img/about_portrait.jpg";
-import MainContent from "../../layout/MainContent/MainContent";
-import Footer from "../../layout/Footer/Footer";
+import { useState, useEffect } from "react";
+import { FlipCard } from "../../components/FlipCard";
+import { isEven } from "../../util";
+
 import styles from "./Home.module.css";
-import About from "../About/About";
 
-const Home = ({ navigator }) => {
-  const [slide, setSlide] = useState(-1);
-  const [isAbout, setisAbout] = useState(false);
+const Home = ({
+  slide,
+  setSlide,
+  slides,
+  offsetSegments,
+  ProfileComponent,
+}) => {
+  const [isSlidingDown, setIsSlidingDown] = useState(true);
 
-  const offsetSegments = 300;
+  const _handleScroll = (e) => {
+    const offset = window.pageYOffset;
+    if (offset < offsetSegments) {
+      if (slide === -1) return;
+      setSlide(-1);
+      setIsSlidingDown(true);
+      return;
+    }
+    slides.forEach((_, index) => {
+      const lowRange = (index + 1) * offsetSegments;
+      const highRange = lowRange + offsetSegments;
 
-  const isProfile = slide === -1;
+      const isInRange = offset > lowRange && offset < highRange;
+      if (isInRange) {
+        if (index === slide) return;
 
-  const darkClass = !isProfile ? styles.darkStyle : "";
+        setIsSlidingDown(slide < index);
 
-  const transitionClass = appendStyles(darkClass, styles.colorTransition);
+        setSlide(index);
+      }
+    });
+  };
 
-  const containerHeight = offsetSegments * projects.length + 1;
+  useEffect(() => {
+    window.addEventListener("scroll", _handleScroll, { passive: true });
 
-  const ProfileComponent = () => (
-    <img
-      src={profile}
-      alt="Lindsey Jackson's profile"
-      onClick={() => {
-        console.log("clidked profile");
-        setisAbout(true);
-      }}
-    />
-  );
+    return () => {
+      window.removeEventListener("scroll", _handleScroll);
+    };
+  });
+  const getTitles = (index, isSlidingDown) => {
+    if (index < 1)
+      return { backTitle: slides[0].title, frontTitle: slides[1].title };
+    return slides.reduce((titles, _, idx) => {
+      if (index === idx) {
+        if (isEven(idx)) {
+          if (isSlidingDown) {
+            return {
+              backTitle: slides[idx].title,
+              frontTitle: slides[idx - 1].title,
+            };
+          } else {
+            return {
+              backTitle: slides[idx].title,
+              frontTitle: slides[idx + 1].title,
+            };
+          }
+        } else {
+          if (isSlidingDown) {
+            return {
+              backTitle: slides[idx - 1].title,
+              frontTitle: slides[idx].title,
+            };
+          } else {
+            return {
+              backTitle: slides[idx + 1].title,
+              frontTitle: slides[idx].title,
+            };
+          }
+        }
+      }
+      return titles;
+    }, {});
+  };
 
-  const navLinks = [
-    {
-      title: "Projects",
-      linkHandler: () => {
-        setisAbout(false);
-      },
-    },
-    {
-      title: "About",
-      linkHandler: () => {
-        setisAbout(true);
-      },
-    },
-  ];
-  return (
-    <div
-      className={styles.container}
-      style={{ height: `calc(100vh + ${containerHeight}px)` }}
-    >
-      <div className={styles.fixedPage}>
-        <div
-          className={styles.slidingBackground}
-          style={!isProfile ? { transform: "translateX(0)" } : {}}
-        ></div>
-        <h1 className={appendStyles(styles.logo, transitionClass)}>
-          <span className={styles.threeD}>{"<>"}</span>Lindsey Jackson
-          <span className={styles.threeD}>{"</>"}</span>
-        </h1>
-        <div className={styles.slidingContainer}>
-          <MainContent
-            slide={slide}
-            setSlide={setSlide}
-            slides={projects}
-            offsetSegments={offsetSegments}
-            ProfileComponent={ProfileComponent}
-          />
+  const renderFlipCard = () => {
+    const { frontTitle, backTitle } = getTitles(slide, isSlidingDown);
+
+    const frontcard =
+      slide < 1 && isSlidingDown ? (
+        <ProfileComponent />
+      ) : (
+        <h1 className={styles.flipCardcontent}>{frontTitle}</h1>
+      );
+    const backCard = <h1 className={styles.flipCardcontent}>{backTitle}</h1>;
+    return (
+      <FlipCard
+        front={frontcard}
+        back={backCard}
+        frontClassName={
+          slide < 1 && isSlidingDown ? "" : styles.flipCardContentContainer
+        }
+        backClassName={styles.flipCardContentContainer}
+        isFront={isEven(slide)}
+      />
+    );
+  };
+
+  const renderSlides = () => {
+    return slides.map((item, index) => {
+      const style = {};
+      if (slide < index) {
+        style.transform = "translateX(100vw)";
+      }
+      return (
+        <div style={style} key={index} className={styles.projects}>
+          <img src={item.img} alt={item.title} />
         </div>
-        <Footer
-          styleClasses={{ darkClass, transitionClass }}
-          navLinks={navLinks}
-        />
-        <About isExpanded={isAbout} />
+      );
+    });
+  };
+
+  const offsetProfilePic = {
+    transform: "translateX(11rem)",
+  };
+
+  return (
+    <div className={styles.slidingContainer}>
+      <div
+        className={styles.flipCard}
+        style={slide === -1 ? offsetProfilePic : {}}
+      >
+        {renderFlipCard()}
       </div>
+      <div className={styles.projectContainer}>{renderSlides()}</div>
     </div>
   );
 };

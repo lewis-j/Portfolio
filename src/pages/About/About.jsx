@@ -7,6 +7,8 @@ const About = ({ isExpanded }) => {
   const container = !isExpanded ? styles.hideContainer : "";
 
   useEffect(() => {
+    console.log(window.history.state);
+
     if (isExpanded) {
       document.body.style.overflow = "hidden";
     } else {
