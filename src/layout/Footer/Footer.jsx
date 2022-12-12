@@ -5,14 +5,12 @@ import { SocialLinks } from "./layout/SocialLinks/SocialLinks";
 import styles from "./Footer.module.css";
 import { Nav } from "./layout/Nav/Nav";
 
-const Footer = ({ styleClasses, navLinks }) => {
-  const { transitionClass } = styleClasses;
-
+const Footer = ({ navLinks }) => {
   return (
     <div className={styles.footer}>
-      <Nav navLinks={navLinks} className={transitionClass} />
-      <CyclingText textList={cyclingText} className={transitionClass} />
-      <SocialLinks classes={styleClasses} />
+      <Nav navLinks={navLinks} />
+      <CyclingText textList={cyclingText} />
+      <SocialLinks />
     </div>
   );
 };

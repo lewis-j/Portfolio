@@ -4,12 +4,12 @@ import projects from "../../assets/data/projects";
 import Footer from "../../layout/Footer/Footer";
 import styles from "./Layout.module.css";
 import { useNavigate } from "../../lib/router/Router";
+import { useThemeContext } from "../../context/ThemeContext/Theme";
 
-const Layout = ({ children, isLightTheme, offsetSegments }) => {
+const Layout = ({ children, offsetSegments }) => {
   const navigate = useNavigate();
-  const darkClass = !isLightTheme ? styles.darkStyle : "";
 
-  const transitionClass = appendStyles(darkClass, styles.colorTransition);
+  const { transitionClass, isDark } = useThemeContext();
 
   const containerHeight = offsetSegments * projects.length + 1;
 
@@ -39,17 +39,14 @@ const Layout = ({ children, isLightTheme, offsetSegments }) => {
       <div className={styles.fixedPage}>
         <div
           className={styles.slidingBackground}
-          style={!isLightTheme ? { transform: "translateX(0)" } : {}}
+          style={isDark ? { transform: "translateX(0)" } : {}}
         ></div>
         <h1 className={appendStyles(styles.logo, transitionClass)}>
           <span className={styles.threeD}>{"<>"}</span>Lindsey Jackson
           <span className={styles.threeD}>{"</>"}</span>
         </h1>
         <div className={styles.children}>{children}</div>
-        <Footer
-          styleClasses={{ darkClass, transitionClass }}
-          navLinks={navLinks}
-        />
+        <Footer navLinks={navLinks} />
       </div>
     </div>
   );

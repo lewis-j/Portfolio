@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import { FlipCard } from "../../components/FlipCard";
+import { useThemeContext } from "../../context/ThemeContext/Theme";
 import { isEven } from "../../util";
 
 import styles from "./Home.module.css";
 
-const Home = ({
-  slide,
-  setSlide,
-  slides,
-  offsetSegments,
-  ProfileComponent,
-}) => {
+const Home = ({ slides, offsetSegments, ProfileComponent }) => {
   const [isSlidingDown, setIsSlidingDown] = useState(true);
+  const [slide, setSlide] = useState(-1);
+
+  const { setIsDark } = useThemeContext();
+
+  useEffect(() => {
+    setIsDark(slide !== -1);
+  }, [slide]);
 
   const _handleScroll = (e) => {
     const offset = window.pageYOffset;

@@ -1,0 +1,8 @@
+.colorTransition {
+  transition: color 2s;
+}
+.darkStyle {
+  color: var(--darkThemeColor);
+  border-color: var(--darkThemeColor);
+  z-index: 1000;
+}

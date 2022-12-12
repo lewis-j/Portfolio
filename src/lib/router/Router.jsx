@@ -20,6 +20,11 @@ const Router = ({ children }) => {
 
 const useRouter = () => useContext(RouterContext);
 
+const Route = ({ to, component, children }) => {
+  const { route } = useRouter();
+  return to === route ? component || children : null;
+};
+
 const useNavigate =
   () =>
   (to, data = {}) => {
@@ -27,4 +32,4 @@ const useNavigate =
     window.dispatchEvent(new PopStateEvent("navigate"));
   };
 
-export { Router, useRouter, useNavigate };
+export { Router, Route, useRouter, useNavigate };

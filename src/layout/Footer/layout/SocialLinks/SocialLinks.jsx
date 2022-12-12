@@ -11,9 +11,10 @@ import socialLinks from "../../../../assets/data/socialLinks";
 import { appendStyles } from "../../../../util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Popup } from "../../../../components/Popup/Popup";
+import { useThemeContext } from "../../../../context/ThemeContext/Theme";
 
-export const SocialLinks = ({ classes }) => {
-  const { darkClass, transitionClass } = classes;
+export const SocialLinks = () => {
+  const { themeClass, transitionClass } = useThemeContext();
 
   const [emailIsOpen, setEmailIsOpen] = useState(false);
   const [hoverTimout, setHoverTimout] = useState();
@@ -35,12 +36,12 @@ export const SocialLinks = ({ classes }) => {
       <SocialLink
         faIcon={faGithub}
         link={socialLinks.gitHub}
-        className={darkClass}
+        className={themeClass}
       />
       <SocialLink
         faIcon={faLinkedinIn}
         link={socialLinks.linkedIn}
-        className={darkClass}
+        className={themeClass}
       />
       <div className={appendStyles(styles.socialEmail, transitionClass)}>
         <FontAwesomeIcon
@@ -57,9 +58,9 @@ export const SocialLinks = ({ classes }) => {
           }}
         />
         <Popup
-          className={darkClass}
+          className={themeClass}
           isOpen={emailIsOpen}
-          isDark={darkClass !== ""}
+          isDark={themeClass !== ""}
           hoverTimout={hoverTimout}
           handleSetTimout={handleClosePopup}
         >
@@ -69,7 +70,7 @@ export const SocialLinks = ({ classes }) => {
           >
             {socialLinks.email + " "}
             <FontAwesomeIcon
-              //   className={darkClass}
+              //   className={themeClass}
               size="sm"
               icon={faPaperPlane}
             />

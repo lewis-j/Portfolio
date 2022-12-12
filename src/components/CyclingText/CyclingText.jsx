@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useThemeContext } from "../../context/ThemeContext/Theme";
 import styles from "./CyclingText.module.css";
 
-const CyclingText = ({ textList, className = "" }) => {
+const CyclingText = ({ textList }) => {
   const [textIndex, setTextIndex] = useState(0);
+  const { transitionClass } = useThemeContext();
 
   useEffect(() => {
     console.log("running useeffect");
@@ -21,7 +23,7 @@ const CyclingText = ({ textList, className = "" }) => {
   }, []);
 
   return (
-    <div className={`${styles.container} ${className}`}>
+    <div className={`${styles.container} ${transitionClass}`}>
       <h3>{textList[textIndex]}</h3>
     </div>
   );

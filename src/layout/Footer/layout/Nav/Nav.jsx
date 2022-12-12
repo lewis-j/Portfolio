@@ -2,8 +2,10 @@ import React from "react";
 import styles from "./Nav.module.css";
 import { appendStyles } from "../../../../util";
 import { nanoid } from "@reduxjs/toolkit";
+import { useThemeContext } from "../../../../context/ThemeContext/Theme";
 
-export const Nav = ({ className, navLinks }) => {
+export const Nav = ({ navLinks }) => {
+  const { transitionClass } = useThemeContext();
   const renderLinks = () => {
     return navLinks.map(({ title, linkHandler }) => (
       <h3 key={nanoid()} onClick={linkHandler}>
@@ -13,6 +15,8 @@ export const Nav = ({ className, navLinks }) => {
   };
 
   return (
-    <div className={appendStyles(styles.links, className)}>{renderLinks()}</div>
+    <div className={appendStyles(styles.links, transitionClass)}>
+      {renderLinks()}
+    </div>
   );
 };

@@ -3,15 +3,12 @@ import projects from "./assets/data/projects";
 import profile from "./assets/img/about_portrait.jpg";
 import "./styles/variables.css";
 import Layout from "./layout/MainLayout/Layout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
-import { Router, useNavigate } from "./lib/router/Router";
-import { Route } from "./lib/router/Route";
+import { Router, Route, useNavigate } from "./lib/router/Router";
 
 function App() {
-  const [slide, setSlide] = useState(-1);
-
   const navigate = useNavigate();
 
   const ProfileComponent = () => (
@@ -19,7 +16,6 @@ function App() {
       src={profile}
       alt="Lindsey Jackson's profile"
       onClick={() => {
-        console.log("clidked profile");
         navigate("/about");
       }}
     />
@@ -29,14 +25,12 @@ function App() {
 
   return (
     <div>
-      <Layout isLightTheme={slide === -1} offsetSegments={offsetSegments}>
+      <Layout offsetSegments={offsetSegments}>
         <Router>
           <Route
             to="/"
             component={
               <Home
-                slide={slide}
-                setSlide={setSlide}
                 slides={projects}
                 offsetSegments={offsetSegments}
                 ProfileComponent={ProfileComponent}
