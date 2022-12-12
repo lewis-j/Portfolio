@@ -36,12 +36,12 @@ export const SocialLinks = () => {
       <SocialLink
         faIcon={faGithub}
         link={socialLinks.gitHub}
-        className={themeClass}
+        className={transitionClass}
       />
       <SocialLink
         faIcon={faLinkedinIn}
         link={socialLinks.linkedIn}
-        className={themeClass}
+        className={transitionClass}
       />
       <div className={appendStyles(styles.socialEmail, transitionClass)}>
         <FontAwesomeIcon

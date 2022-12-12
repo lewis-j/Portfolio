@@ -25,8 +25,8 @@ function App() {
 
   return (
     <div>
-      <Layout offsetSegments={offsetSegments}>
-        <Router>
+      <Router>
+        <Layout offsetSegments={offsetSegments}>
           <Route
             to="/"
             component={
@@ -38,8 +38,8 @@ function App() {
             }
           />
           <Route to="/about" component={<About />} />
-        </Router>
-      </Layout>
+        </Layout>
+      </Router>
     </div>
   );
 }

@@ -4,12 +4,13 @@ const Router = ({ children }) => {
   const [route, setRoute] = useState(window.location.pathname);
   useEffect(() => {
     const onLocationChange = () => {
-      console.log("navigating");
       setRoute(window.location.pathname);
     };
     window.addEventListener("navigate", onLocationChange);
     return () => window.removeEventListener("navigate", onLocationChange);
   }, []);
+
+  console.log("route", route);
 
   return (
     <RouterContext.Provider value={{ route }}>

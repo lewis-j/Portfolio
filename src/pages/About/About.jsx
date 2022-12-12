@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
 import { appendStyles } from "../../util";
 import styles from "./About.module.css";
+import { useThemeContext } from "../../context/ThemeContext/Theme";
 
 const About = () => {
-  // const expandStateStyle = isExpanded ? styles.expanded : styles.collapsed;
-  // const container = !isExpanded ? styles.hideContainer : "";
+  const { setIsDark } = useThemeContext();
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-
-    return () => (document.body.style.overflow = "visible");
+    setIsDark(true);
+    return () => {
+      document.body.style.overflow = "visible";
+      setIsDark(false);
+    };
   }, []);
   return (
     <div className={appendStyles(styles.wrapper)}>
