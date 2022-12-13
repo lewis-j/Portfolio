@@ -19,6 +19,6 @@
 .socialIcon:active,
 .socialLink:hover,
 .socialLink:active {
-  color: var(--hover-color);
+  color: var(--highlightColor);
   transition: color 0s;
 }

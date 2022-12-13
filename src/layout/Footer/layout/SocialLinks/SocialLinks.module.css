@@ -25,7 +25,7 @@
 
 .emailIcon:hover,
 .emailIcon:active {
-  color: var(--hover-color);
+  color: var(--highlightColor);
   transform: scale(0.9);
   transition: 0s;
 }
@@ -34,7 +34,7 @@
 .emailLink:active,
 .copyClipboard:hover,
 .copyClipboard:active {
-  color: var(--hover-color);
-  border-color: var(--hover-color);
+  color: var(--highlightColor);
+  border-color: var(--highlightColor);
   transition: 0s;
 }

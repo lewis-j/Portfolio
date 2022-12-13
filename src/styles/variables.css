@@ -1,12 +1,19 @@
 :root {
   --slide-containers: 300px;
   --neon-color: rgb(32, 32, 32);
-  --neon-box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff,
-    0 0 2rem var(--neon-color), 0 0 0.8rem var(--neon-color),
-    0 0 2.8rem var(--neon-color), inset 0 0 1.3rem var(--neon-color);
+  --neon-box-shadow: 0 0 0.2rem #fff, 0 0 0.4rem #fff,
+    0 0 2rem var(--neon-color), 0 0 1.8rem var(--neon-color),
+    0 0 3.8rem var(--neon-color), inset 0 0 1.3rem var(--neon-color);
   --neon-border: 0.2rem solid #fff;
   --borderRadius: 5px;
   --lightThemeColor: black;
   --darkThemeColor: white;
-  --hover-color: purple;
+  --highlightColor: purple;
+  --secondaryHighlightColor: #bdd5f6;
+  --github-purple: #d2a8ff;
+  --github-red: #ff7b72;
+  --github-blue: #79c0ff;
+  --github-white: #c9d1d9;
+  --github-outline: #30363d;
+  --github-background: #0d1117;
 }

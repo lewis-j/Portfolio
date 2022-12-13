@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .container {
@@ -20,26 +20,97 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: rgb(255, 255, 255); */
-  background-image: url("../../assets/img/space.jpg");
-  background-size: contain;
   border-radius: 50%;
-  animation: scaleUp 3s ease forwards;
+  animation: scaleUp 1s ease forwards;
   z-index: 800;
 }
 
-.about {
-  /* background-color: green; */
-  /* background-image: url("../../assets/img/about-space.jpg"); */
+.spaceBackground {
+  background-image: url("../../assets/img/space.jpg");
   background-size: contain;
-  color: white;
-  height: 100vh;
-  width: 101vw;
+  border-radius: 50%;
+}
+
+.about {
+  background: fixed;
+  color: rgb(255, 255, 255);
+  height: 70vh;
+  width: 100vw;
+  background-image: linear-gradient(181deg, black, #000000b5);
+  background-size: 100vw 100%;
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  z-index: 2000;
+}
+
+.content {
+  display: flex;
+  flex-flow: column wrap;
+  width: 60vw;
+  background-color: var(--github-background);
+  border: 1px solid var(--secondaryHighlightColor);
+  box-shadow: 0 0 0.5rem var(--secondaryHighlightColor),
+    inset 0 0 1rem var(--secondaryHighlightColor);
+  border-radius: 15px;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.resume {
+  background-color: var(--highlightColor);
+  color: inherit;
+  width: 10em;
+  padding: 5px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.resume span {
+  margin-right: 5px;
+}
+
+.aboutImg {
+  width: 400px;
+  height: 400px;
+}
+.aboutImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  color: var(--secondaryHighlightColor);
+  letter-spacing: 5px;
+}
+
+.skillList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+.skill {
+  max-width: 10em;
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes scaleUp {
   0% {
     transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
   }
   100% {
     transform: scale(1);

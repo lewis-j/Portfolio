@@ -41,7 +41,11 @@ const Layout = ({ children, offsetSegments }) => {
         {route === "/" && (
           <div
             className={styles.slidingBackground}
-            style={isDark ? { transform: "translateX(-100vw)" } : {}}
+            style={
+              isDark
+                ? { transform: "translateX(-100vw)", opacity: "1" }
+                : { opacity: "0" }
+            }
           ></div>
         )}
         <h1 className={appendStyles(styles.logo, transitionClass)}>
