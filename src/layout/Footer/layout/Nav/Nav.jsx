@@ -6,8 +6,8 @@ import { useThemeContext } from "../../../../context/ThemeContext/Theme";
 export const Nav = ({ navLinks }) => {
   const { transitionClass } = useThemeContext();
   const renderLinks = () => {
-    return navLinks.map(({ title, linkHandler }) => (
-      <h3 key={nanoid()} onClick={linkHandler}>
+    return navLinks.map(({ title, linkHandler }, idx) => (
+      <h3 key={`${title}-${idx}`} onClick={linkHandler}>
         {title}
       </h3>
     ));
