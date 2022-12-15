@@ -23,6 +23,7 @@ const useRouter = () => useContext(RouterContext);
 
 const Route = ({ to, component, children }) => {
   const { route } = useRouter();
+  console.log("route", route);
   return to === route ? component || children : null;
 };
 

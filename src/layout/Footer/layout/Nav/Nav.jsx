@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Nav.module.css";
 import { appendStyles } from "../../../../util";
-import { nanoid } from "@reduxjs/toolkit";
 import { useThemeContext } from "../../../../context/ThemeContext/Theme";
 
 export const Nav = ({ navLinks }) => {

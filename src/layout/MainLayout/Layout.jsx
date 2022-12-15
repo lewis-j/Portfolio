@@ -32,6 +32,7 @@ const Layout = ({ children, offsetSegments }) => {
       },
     },
   ];
+  console.log("route", route);
   return (
     <div
       className={styles.container}

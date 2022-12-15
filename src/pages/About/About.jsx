@@ -11,22 +11,15 @@ import {
   aboutMe,
 } from "../../assets/data/aboutContent";
 
-const About = (props) => {
+const About = () => {
   const { setIsDark } = useThemeContext();
   const [isDownLoading, setIsDownLoading] = useState(false);
-  const animRef = useRef();
 
   useEffect(() => {
-    // document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
     setIsDark(true);
     return () => {
       document.body.style.overflow = "visible";
-    };
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      console.log("the ref", animRef);
     };
   }, []);
 
@@ -64,10 +57,7 @@ const About = (props) => {
 
   return (
     <div className={appendStyles(styles.wrapper)}>
-      <div
-        ref={animRef}
-        className={appendStyles(styles.container, styles.spaceBackground)}
-      >
+      <div className={appendStyles(styles.container, styles.spaceBackground)}>
         <div className={styles.about}>
           <div className={styles.aboutImg}>
             <img src={aboutPic} alt="lindsey's portrait" />
