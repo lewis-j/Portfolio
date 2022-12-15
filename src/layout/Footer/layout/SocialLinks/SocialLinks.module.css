@@ -28,6 +28,7 @@
   color: var(--highlightColor);
   transform: scale(0.9);
   transition: 0s;
+  cursor: var(--pointer-cursor);
 }
 
 .emailLink:hover,
@@ -37,4 +38,5 @@
   color: var(--highlightColor);
   border-color: var(--highlightColor);
   transition: 0s;
+  cursor: var(--pointer-cursor);
 }

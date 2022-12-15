@@ -2,5 +2,16 @@
   display: flex;
   text-align: center;
   justify-content: space-around;
+}
+
+.links h3 {
   text-decoration: underline;
+  letter-spacing: var(--letter-spacing-large);
+}
+
+.links h3:hover {
+  color: var(--highlightColor);
+  text-decoration-color: var(--highlightColor);
+  transform: scale(1.1);
+  cursor: var(--pointer-cursor);
 }

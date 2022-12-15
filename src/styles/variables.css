@@ -1,19 +1,29 @@
 :root {
-  --slide-containers: 300px;
-  --neon-color: rgb(32, 32, 32);
-  --neon-box-shadow: 0 0 0.2rem #fff, 0 0 0.4rem #fff,
-    0 0 2rem var(--neon-color), 0 0 1.8rem var(--neon-color),
-    0 0 3.8rem var(--neon-color), inset 0 0 1.3rem var(--neon-color);
-  --neon-border: 0.2rem solid #fff;
-  --borderRadius: 5px;
+  /*Colors */
   --lightThemeColor: black;
   --darkThemeColor: white;
   --highlightColor: purple;
-  --secondaryHighlightColor: #bdd5f6;
+  --secondaryHighlightColor: #68b2e0;
+  --tertiaryHighlightColor: #c6e5f8;
   --github-purple: #d2a8ff;
   --github-red: #ff7b72;
   --github-blue: #79c0ff;
   --github-white: #c9d1d9;
   --github-outline: #30363d;
-  --github-background: #0d1117;
+  --about-content: rgba(13, 17, 23, 0.4);
+  --neon-color: rgb(32, 32, 32);
+
+  /*Box Model */
+  --neon-border: 0.2rem solid #fff;
+  --borderRadius: 5px;
+  --neon-box-shadow: 0 0 0.2rem #fff, 0 0 0.4rem #fff,
+    0 0 2rem var(--neon-color), 0 0 1.8rem var(--neon-color),
+    0 0 3.8rem var(--neon-color), inset 0 0 1.3rem var(--neon-color);
+
+  /*sizing*/
+  --slide-containers: 300px;
+  --letter-spacing-large: 5px;
+  --letter-spacing-small: 3px;
+  /*misc*/
+  --pointer-cursor: pointer;
 }

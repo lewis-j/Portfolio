@@ -20,12 +20,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: scaleUp 1.5s ease-out forwards;
   border-radius: 50%;
-  animation: scaleUp 1s ease forwards;
+
   z-index: 800;
 }
 
-.spaceBackground {
+.container:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
   background-image: url("../../assets/img/space.jpg");
   background-size: contain;
   border-radius: 50%;
@@ -39,7 +46,7 @@
   background-image: linear-gradient(181deg, black, #000000b5);
   background-size: 100vw 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   justify-items: center;
   z-index: 2000;
 }
@@ -48,22 +55,30 @@
   display: flex;
   flex-flow: column wrap;
   width: 60vw;
-  background-color: var(--github-background);
-  border: 1px solid var(--secondaryHighlightColor);
-  box-shadow: 0 0 0.5rem var(--secondaryHighlightColor),
-    inset 0 0 1rem var(--secondaryHighlightColor);
+  max-width: 60rem;
+  background: var(--about-content);
+  border: 1px solid var(--tertiaryHighlightColor);
+  box-shadow: 0 0 0.5rem var(--tertiaryHighlightColor),
+    inset 0 0 1rem var(--tertiaryHighlightColor);
   border-radius: 15px;
   margin-right: 1rem;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .resume {
-  background-color: var(--highlightColor);
-  color: inherit;
+  background-color: var(--secondaryHighlightColor);
+  color: var(--lightThemeColor);
   width: 10em;
+  font-weight: bolder;
   padding: 5px;
   border-radius: 20px;
   text-align: center;
+  cursor: var(--pointer-cursor);
+}
+
+.resume:hover {
+  background-color: var(--darkThemeColor);
+  transform: scale(0.9);
 }
 
 .resume span {
@@ -71,8 +86,9 @@
 }
 
 .aboutImg {
-  width: 400px;
-  height: 400px;
+  --about-img-size: 70vh;
+  width: var(--about-img-size);
+  height: var(--about-img-size);
 }
 .aboutImg img {
   width: 100%;
@@ -81,38 +97,55 @@
 }
 
 .title {
+  text-transform: uppercase;
   color: var(--secondaryHighlightColor);
-  letter-spacing: 5px;
+  letter-spacing: var(--letter-spacing-large);
 }
 
-.skillList {
+.aboutMe {
+  --gradient-width: 10dpx;
+  background: linear-gradient(
+      to top,
+      #000000,
+      transparent var(--gradient-width)
+    ),
+    linear-gradient(to right, #000000, transparent var(--gradient-width)),
+    linear-gradient(to bottom, #000000, transparent var(--gradient-width)),
+    linear-gradient(to left, #000000, transparent var(--gradient-width));
+  background-color: rgba(255, 255, 255, 0.575);
+  color: black;
+  min-height: 6rem;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.list {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  padding: 1em;
+  gap: 2em;
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--tertiaryHighlightColor);
 }
-.skill {
+.listitem {
   max-width: 10em;
-}
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 @keyframes scaleUp {
   0% {
     transform: scale(0);
   }
-  50% {
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleDown {
+  0% {
     transform: scale(1);
   }
   100% {
-    transform: scale(1);
+    transform: scale(0);
   }
 }

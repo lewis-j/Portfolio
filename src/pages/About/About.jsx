@@ -1,69 +1,90 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { appendStyles } from "../../util";
 import styles from "./About.module.css";
 import aboutPic from "../../assets/img/about_pic.png";
 import { useThemeContext } from "../../context/ThemeContext/Theme";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { skillsList } from "../../assets/data/aboutContent";
+import {
+  skillsList,
+  frameworksAndLibraries,
+  aboutMe,
+} from "../../assets/data/aboutContent";
 
-const About = () => {
+const About = (props) => {
   const { setIsDark } = useThemeContext();
   const [isDownLoading, setIsDownLoading] = useState(false);
+  const animRef = useRef();
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    // document.body.style.overflow = "hidden";
     setIsDark(true);
     return () => {
       document.body.style.overflow = "visible";
     };
   }, []);
 
-  const handleDownload = async () => {
-    console.log("Downloading File");
+  useEffect(() => {
+    return () => {
+      console.log("the ref", animRef);
+    };
+  }, []);
 
+  const handleDownload = async () => {
     try {
       setIsDownLoading(true);
-      console.log("isDownloaing");
-      const response = await fetch(
-        "Lindsey_Jackson_Resume_20-11-2022-15-14-24.pdf"
-      );
+      const response = await fetch("Lindsey_Jackson_Resume.pdf");
       const blob = await response.blob();
       const fileUrl = window.URL.createObjectURL(blob);
       let alink = document.createElement("a");
       alink.href = fileUrl;
-      alink.download = "Lindsey_Jackson_Resume_20-11-2022-15-14-24.pdf";
-      // alink.click();
+      alink.download = "Lindsey_Jackson_Resume.pdf";
+      alink.click();
     } catch (error) {
       console.log(error);
     } finally {
-      console.log("doneDownloading");
       setIsDownLoading(false);
     }
   };
 
-  const renderSkillsList = (list) => {
-    return list.map((skill) => {
+  const renderList = (list) => {
+    return list.map((item) => {
       return (
-        <div key={skill} className={styles.skill}>
-          {skill}
+        <div key={item} className={styles.listitem}>
+          {item}
         </div>
       );
     });
   };
 
+  const joinedFrameWorksAndLibraries = frameworksAndLibraries.map(
+    (itemSet, i) =>
+      itemSet.map((item, j) => <div key={`${item} ${i}${j}`}>{item}</div>)
+  );
+
   return (
     <div className={appendStyles(styles.wrapper)}>
-      <div className={appendStyles(styles.container, styles.spaceBackground)}>
+      <div
+        ref={animRef}
+        className={appendStyles(styles.container, styles.spaceBackground)}
+      >
         <div className={styles.about}>
           <div className={styles.aboutImg}>
             <img src={aboutPic} alt="lindsey's portrait" />
           </div>
           <div className={styles.content}>
-            <div className={styles.skills}>
-              <h2 className={styles.title}>Prominent skills</h2>
-              <div className={styles.skillList}>
-                {renderSkillsList(skillsList)}
+            <div className={styles.section}>
+              <h3 className={styles.title}>Who am I?</h3>
+              <div className={styles.aboutMe}>{aboutMe}</div>
+            </div>
+            <div className={styles.section}>
+              <h3 className={styles.title}>Prominent skills</h3>
+              <div className={styles.list}>{renderList(skillsList)}</div>
+            </div>
+            <div className={styles.section}>
+              <h3 className={styles.title}>Frameworks/Libraries</h3>
+              <div className={styles.list}>
+                {renderList(joinedFrameWorksAndLibraries)}
               </div>
             </div>
             <div className={styles.resume} onClick={handleDownload}>

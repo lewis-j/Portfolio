@@ -21,4 +21,5 @@
 .socialLink:active {
   color: var(--highlightColor);
   transition: color 0s;
+  cursor: var(--pointer-cursor);
 }

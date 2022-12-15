@@ -1,5 +1,5 @@
 .container {
-  letter-spacing: 5px;
+  letter-spacing: var(--letter-spacing-large);
   text-transform: uppercase;
   width: 18em;
   text-align: center;
