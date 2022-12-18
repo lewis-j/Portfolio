@@ -10,35 +10,43 @@
   border-style: solid;
   border-width: 1px;
   border-radius: var(--borderRadius);
+  border-bottom: none;
   padding: 5px;
   animation: fadeIn 0.5s ease-in forwards;
 }
-.arrowLight::before {
-  content: "";
+.borderBottom {
   position: absolute;
-  right: 5px;
-  bottom: -5px;
-  transform: rotate(45deg);
-  width: 7px;
-  height: 7px;
-  background-color: var(--darkThemeColor);
-  border-bottom: 1px solid var(--lightThemeColor);
-  border-right: 1px solid var(--lightThemeColor);
-  transition-delay: 1.3s;
+  bottom: 0px;
+  left: 3px;
+  height: 0px;
+  width: 96%;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--lightThemeColor);
+  transition: 2s;
 }
-
+/* .borderBottomDark {
+  border-bottom-color: var(--darkThemeColor);
+} */
+.arrowLight::before,
 .arrowDark::before {
   content: "";
   position: absolute;
-  right: 5px;
-  bottom: -5px;
+  right: 2px;
+  bottom: -3px;
   transform: rotate(45deg);
   width: 7px;
   height: 7px;
-  background-color: var(--lightThemeColor);
+  transition: 2s;
+  background-color: transparent;
+}
+.arrowLight::before {
+  border-bottom: 1px solid var(--lightThemeColor);
+  border-right: 1px solid var(--lightThemeColor);
+}
+.arrowDark::before {
   border-bottom: 1px solid var(--darkThemeColor);
   border-right: 1px solid var(--darkThemeColor);
-  transition-delay: 0.2s;
 }
 
 @keyframes fadeIn {

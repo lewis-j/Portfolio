@@ -58,9 +58,7 @@ export const SocialLinks = () => {
           }}
         />
         <Popup
-          className={themeClass}
           isOpen={emailIsOpen}
-          isDark={themeClass !== ""}
           hoverTimout={hoverTimout}
           handleSetTimout={handleClosePopup}
         >
