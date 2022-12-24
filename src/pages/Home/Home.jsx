@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Tabs } from "../../components";
 import { FlipCard } from "../../components/FlipCard";
 import { useThemeContext } from "../../context/ThemeContext/Theme";
 import { isEven } from "../../util";
@@ -102,7 +103,6 @@ const Home = ({ slides, offsetSegments, ProfileComponent }) => {
       />
     );
   };
-
   const renderSlides = () => {
     return slides.map((item, index) => {
       const style = {};
@@ -116,11 +116,9 @@ const Home = ({ slides, offsetSegments, ProfileComponent }) => {
       );
     });
   };
-
   const offsetProfilePic = {
     transform: "translateX(11rem)",
   };
-
   return (
     <div className={styles.slidingContainer}>
       <div
@@ -130,6 +128,7 @@ const Home = ({ slides, offsetSegments, ProfileComponent }) => {
         {renderFlipCard()}
       </div>
       <div className={styles.projectContainer}>{renderSlides()}</div>
+      <Tabs />
     </div>
   );
 };
