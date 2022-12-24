@@ -19,11 +19,15 @@ const Layout = ({ children, offsetSegments }) => {
       linkHandler: () => {
         setIsDark(false);
         navigate("/");
+        window.scrollTo(0, 0);
       },
     },
     {
       title: "Projects",
-      linkHandler: () => {},
+      linkHandler: () => {
+        navigate("/");
+        window.scrollTo(0, offsetSegments + 50);
+      },
     },
     {
       title: "About",
@@ -32,7 +36,6 @@ const Layout = ({ children, offsetSegments }) => {
       },
     },
   ];
-  console.log("route", route);
   return (
     <div
       className={styles.container}

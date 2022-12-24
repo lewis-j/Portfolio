@@ -119,16 +119,30 @@ const Home = ({ slides, offsetSegments, ProfileComponent }) => {
   const offsetProfilePic = {
     transform: "translateX(11rem)",
   };
+
+  const setScrollPosition = (slideIndex) => {
+    window.scrollTo(0, slideIndex * offsetSegments + 1);
+  };
   return (
     <div className={styles.slidingContainer}>
-      <div
-        className={styles.flipCard}
-        style={slide === -1 ? offsetProfilePic : {}}
-      >
-        {renderFlipCard()}
+      <div className={styles.cardsContainer}>
+        <div
+          className={styles.flipCard}
+          style={slide === -1 ? offsetProfilePic : {}}
+        >
+          {renderFlipCard()}
+        </div>
+        <div className={styles.projectContainer}>{renderSlides()}</div>
       </div>
-      <div className={styles.projectContainer}>{renderSlides()}</div>
-      <Tabs />
+      <div className={styles.tabs}>
+        {slide >= 0 && (
+          <Tabs
+            length={slides.length}
+            current={slide}
+            handleActive={setScrollPosition}
+          />
+        )}
+      </div>
     </div>
   );
 };

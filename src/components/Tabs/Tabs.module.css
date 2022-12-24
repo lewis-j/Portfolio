@@ -1,3 +1,31 @@
 .container {
-  color: white;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.5rem;
+  animation: fadeIn 2s ease-in forwards;
+}
+
+.tab {
+  color: var(--unselectedDarkThemeColor);
+  border: 0.1rem solid var(--unselectedDarkThemeColor);
+  border-radius: var(--borderRadius);
+  padding: 0.25em 0.5em;
+}
+
+.tab:hover,
+.tabActive {
+  color: var(--darkThemeColor);
+  border: var(--neon-border);
+  box-shadow: var(--neon-box-shadow);
+  border-radius: var(--borderRadius);
+  padding: 0.25em 0.5em;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
