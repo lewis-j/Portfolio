@@ -13,19 +13,28 @@
   --github-white: #c9d1d9;
   --github-outline: #30363d;
   --about-content: rgba(13, 17, 23, 0.4);
-  --neon-color: rgb(32, 32, 32);
+  --neon-color-shadow: rgb(32, 32, 32);
 
   /*Box Model */
   --neon-border: 0.2rem solid #fff;
   --borderRadius: 5px;
+  --padding: 0.25em 0.5em;
   --neon-box-shadow: 0 0 0.2rem #fff, 0 0 0.4rem #fff,
-    0 0 2rem var(--neon-color), 0 0 1.8rem var(--neon-color),
-    0 0 3.8rem var(--neon-color), inset 0 0 1.3rem var(--neon-color);
+    0 0 2rem var(--neon-color-shadow), 0 0 1.8rem var(--neon-color-shadow),
+    0 0 3.8rem var(--neon-color-shadow),
+    inset 0 0 1.3rem var(--neon-color-shadow);
+
+  /*text*/
+  --neon-text-shadow: 0 0 4px rgb(0, 0, 0), 0 0 8px rgb(0, 0, 0),
+    0 0 5px rgb(255, 255, 255), 0 0 50px rgb(255, 255, 255);
+  --neon-text-shadow-highlight: 0 0 4px rgb(255, 255, 255), 0 0 8px #fff,
+    0 0 11px #fff, 0 0 19px var(--neon-color-shadow),
+    0 0 40px var(--neon-color-shadow);
+  --letter-spacing-large: 5px;
+  --letter-spacing-small: 3px;
 
   /*sizing*/
   --slide-containers: 300px;
-  --letter-spacing-large: 5px;
-  --letter-spacing-small: 3px;
 
   /*misc*/
   --pointer-cursor: pointer;

@@ -18,7 +18,7 @@
   border: var(--neon-border);
   box-shadow: var(--neon-box-shadow);
   border-radius: var(--borderRadius);
-  padding: 0.25em 0.5em;
+  padding: var(--padding);
 }
 
 @keyframes fadeIn {

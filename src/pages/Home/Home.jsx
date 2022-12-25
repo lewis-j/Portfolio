@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { DisplayCards, Tabs } from "../../components";
 import { useThemeContext } from "../../context/ThemeContext/Theme";
+import projects from "../../assets/data/projects";
 
 import styles from "./Home.module.css";
 
-const Home = ({ slides, offsetSegments, ProfileComponent }) => {
+const Home = ({ offsetSegments }) => {
   const [isSlidingDown, setIsSlidingDown] = useState(true);
   const [slide, setSlide] = useState(-1);
 
@@ -22,7 +23,7 @@ const Home = ({ slides, offsetSegments, ProfileComponent }) => {
       setIsSlidingDown(true);
       return;
     }
-    slides.forEach((_, index) => {
+    projects.forEach((_, index) => {
       const lowRange = (index + 1) * offsetSegments;
       const highRange = lowRange + offsetSegments;
 
@@ -51,13 +52,13 @@ const Home = ({ slides, offsetSegments, ProfileComponent }) => {
     <div className={styles.slidingContainer}>
       <DisplayCards
         slide={slide}
-        slides={slides}
+        slides={projects}
         isSlidingDown={isSlidingDown}
       />
       <div className={styles.tabs}>
         {slide >= 0 && (
           <Tabs
-            length={slides.length}
+            length={projects.length}
             current={slide}
             handleActive={setScrollPosition}
           />

@@ -3,6 +3,9 @@ import styles from "./DisplayCards.module.css";
 import profile from ".././../assets/img/about_portrait.jpg";
 import { useNavigate } from "../../lib/router/Router";
 import { isEven } from "../../util";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faReadme, faSquareGithub } from "@fortawesome/free-brands-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 const DisplayCards = ({ slide, slides, isSlidingDown }) => {
   const navigate = useNavigate();
@@ -17,33 +20,32 @@ const DisplayCards = ({ slide, slides, isSlidingDown }) => {
     />
   );
 
-  const getTitles = (index, isSlidingDown) => {
-    if (index < 1)
-      return { backTitle: slides[0].title, frontTitle: slides[1].title };
+  const getMenu = (index, isSlidingDown) => {
+    if (index < 1) return { backCard: slides[0], frontCard: slides[1] };
     return slides.reduce((titles, _, idx) => {
       if (index === idx) {
         if (isEven(idx)) {
           if (isSlidingDown) {
             return {
-              backTitle: slides[idx].title,
-              frontTitle: slides[idx - 1].title,
+              backCard: slides[idx],
+              frontCard: slides[idx - 1],
             };
           } else {
             return {
-              backTitle: slides[idx].title,
-              frontTitle: slides[idx + 1].title,
+              backCard: slides[idx],
+              frontCard: slides[idx + 1],
             };
           }
         } else {
           if (isSlidingDown) {
             return {
-              backTitle: slides[idx - 1].title,
-              frontTitle: slides[idx].title,
+              backCard: slides[idx - 1],
+              frontCard: slides[idx],
             };
           } else {
             return {
-              backTitle: slides[idx + 1].title,
-              frontTitle: slides[idx].title,
+              backCard: slides[idx + 1],
+              frontCard: slides[idx],
             };
           }
         }
@@ -52,20 +54,43 @@ const DisplayCards = ({ slide, slides, isSlidingDown }) => {
     }, {});
   };
 
-  const renderFlipCard = () => {
-    const { frontTitle, backTitle } = getTitles(slide, isSlidingDown);
+  const renderMenuCard = (project) => {
+    return (
+      <div className={styles.menuContent}>
+        <h1 className={styles.menuTitle}>{project.title}</h1>
+        <ul>
+          <li
+            onClick={() => {
+              window.open(project.github, "_blank");
+            }}
+          >
+            <FontAwesomeIcon icon={faSquareGithub} /> Git Repository
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faLink} /> view project
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faReadme} /> read me
+          </li>
+        </ul>
+      </div>
+    );
+  };
 
-    const frontcard =
+  const renderFlipCard = () => {
+    const { frontCard, backCard } = getMenu(slide, isSlidingDown);
+
+    const front =
       slide < 1 && isSlidingDown ? (
         <ProfileComponent />
       ) : (
-        <h1 className={styles.flipCardcontent}>{frontTitle}</h1>
+        renderMenuCard(frontCard)
       );
-    const backCard = <h1 className={styles.flipCardcontent}>{backTitle}</h1>;
+    const back = renderMenuCard(backCard);
     return (
       <FlipCard
-        front={frontcard}
-        back={backCard}
+        front={front}
+        back={back}
         frontClassName={
           slide < 1 && isSlidingDown ? "" : styles.flipCardContentContainer
         }
@@ -82,7 +107,7 @@ const DisplayCards = ({ slide, slides, isSlidingDown }) => {
       }
       return (
         <div style={style} key={index} className={styles.projects}>
-          <img src={item.img} alt={item.title} />
+          <img src={item.imgs[0]} alt={item.title} />
         </div>
       );
     });

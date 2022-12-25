@@ -8,21 +8,39 @@
   gap: 4rem;
 }
 
-.flipCardcontent {
+.menuContent {
   display: flex;
+  flex-direction: column;
   height: 100%;
-  justify-content: center;
   align-items: center;
   margin: 0;
 }
+.menuContent ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 0;
+  padding: 0;
+}
+.menuContent li {
+  list-style-type: none;
+  border: var(--neon-border);
+  border-width: 0.1rem;
+  text-shadow: var(--neon-text-shadow);
+  border-radius: var(--borderRadius);
+  padding: var(--padding);
+}
+.menuContent li:hover,
+.menuContent li:active {
+  text-shadow: var(--neon-text-shadow-highlight);
+  box-shadow: var(--neon-box-shadow);
+}
 
 .flipCardContentContainer {
-  --neon-color: rgb(73, 73, 73);
   border: var(--neon-border);
   box-shadow: var(--neon-box-shadow);
   color: white;
-  text-shadow: 0 0 4px rgb(0, 0, 0), 0 0 8px #fff, 0 0 11px #fff,
-    0 0 19px var(--neon-color), 0 0 40px var(--neon-color);
+  text-shadow: var(--neon-text-shadow);
   letter-spacing: var(--letter-spacing-large);
   text-transform: uppercase;
   background-color: black;
@@ -41,7 +59,7 @@
 }
 
 .projects > img {
-  object-fit: cover;
+  object-fit: fill;
   width: 100%;
   height: 100%;
 }
