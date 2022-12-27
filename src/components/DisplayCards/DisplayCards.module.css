@@ -48,20 +48,52 @@
 
 .projects {
   position: absolute;
-  background-color: white;
   transition: 1s;
+  /* border-radius: 5px;
+  border: var(--neon-border); */
+  z-index: 2;
+}
+
+.flipCardImg {
   border-radius: 5px;
   border: var(--neon-border);
 }
 
-.projects:nth-child(1) {
+.boxShadow {
   box-shadow: var(--neon-box-shadow);
 }
 
-.projects > img {
+.profileComponent {
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.slideImgContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.slideImg {
   object-fit: fill;
   width: 100%;
   height: 100%;
+}
+
+.slideImgArrowLeft,
+.slideImgArrowRight {
+  position: absolute;
+  bottom: 1em;
+}
+
+.slideImgArrowLeft {
+  left: 1em;
+}
+
+.slideImgArrowRight {
+  right: 1em;
 }
 
 .projects,

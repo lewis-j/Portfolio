@@ -1,5 +1,7 @@
 import koana from "../img/Koana.png";
 import pitchapp from "../img/projects/pitchapp";
+import space from "../img/space_ripple.jpg";
+import tear from "../img/white-tear.jpg";
 
 console.log(
   `%cpitch app import:`,
@@ -11,7 +13,7 @@ const projects = [
   {
     title: "Koana",
     content: "my video",
-    imgs: [koana],
+    imgs: [koana, space, tear, koana, space],
     github: null,
     url: "https://www.alohakoana.com/",
   },

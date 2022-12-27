@@ -6,6 +6,7 @@ import { isEven } from "../../util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReadme, faSquareGithub } from "@fortawesome/free-brands-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
+import FlipCarousel from "../FlipCarousel/FlipCarousel";
 
 const DisplayCards = ({ slide, slides, isSlidingDown }) => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const DisplayCards = ({ slide, slides, isSlidingDown }) => {
   const ProfileComponent = () => (
     <img
       src={profile}
+      className={styles.profileComponent}
       alt="Lindsey Jackson's profile"
       onClick={() => {
         navigate("/about");
@@ -95,20 +97,24 @@ const DisplayCards = ({ slide, slides, isSlidingDown }) => {
           slide < 1 && isSlidingDown ? "" : styles.flipCardContentContainer
         }
         backClassName={styles.flipCardContentContainer}
-        isFront={isEven(slide)}
+        isBack={isEven(slide)}
       />
     );
   };
+
   const renderSlides = () => {
-    return slides.map((item, index) => {
+    return slides.map((project, index) => {
       const style = {};
       if (slide < index) {
         style.transform = "translateX(100vw)";
       }
       return (
-        <div style={style} key={index} className={styles.projects}>
-          <img src={item.imgs[0]} alt={item.title} />
-        </div>
+        <FlipCarousel
+          key={`${index}:${project.title}`}
+          project={project}
+          index={index}
+          style={style}
+        />
       );
     });
   };
