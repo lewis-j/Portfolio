@@ -148,6 +148,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
         renderCard: getCard(project),
         frontClassName: classNames,
         backClassName: classNames,
+        index: slide,
       };
 
       return (

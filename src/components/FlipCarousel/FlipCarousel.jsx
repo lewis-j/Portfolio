@@ -1,13 +1,24 @@
 import styles from "./FlipCarousel.module.css";
 import { isEven } from "../../util";
 import { FlipCard } from "../FlipCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const FlipCarousel = ({ renderCard, frontClassName, backClassName }) => {
+const FlipCarousel = ({ renderCard, frontClassName, backClassName, index }) => {
   const [slide, setSlide] = useState(0);
   const [isIncrementing, setIsIncrementing] = useState(false);
   // const [slide, setSlide] = useState(0);
 
+  useEffect(() => {
+    if (index === null) return;
+    setSlide((prev) => {
+      if (prev > index) {
+        setIsIncrementing(false);
+      } else {
+        setIsIncrementing(true);
+      }
+      return index;
+    });
+  }, [index]);
   const decrementSlide = () => {
     setIsIncrementing(false);
     setSlide(slide - 1);
