@@ -5,7 +5,7 @@
 
 .flipcardFront,
 .flipcardBack {
-  transition: transform 2s;
+  transition: transform 0.5s;
   height: var(--slide-containers);
   position: absolute;
   top: 0;

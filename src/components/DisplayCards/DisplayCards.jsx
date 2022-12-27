@@ -1,8 +1,7 @@
-import { FlipCard } from "../FlipCard";
 import styles from "./DisplayCards.module.css";
 import profile from ".././../assets/img/about_portrait.jpg";
 import { useNavigate } from "../../lib/router/Router";
-import { appendStyles, isEven } from "../../util";
+import { appendStyles } from "../../util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReadme, faSquareGithub } from "@fortawesome/free-brands-svg-icons";
 import {
@@ -25,49 +24,17 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
       }}
     />
   );
-
-  const getMenu = (index, isIncrementing) => {
-    if (index < 1) return { backCard: slides[0], frontCard: slides[1] };
-    return slides.reduce((titles, _, idx) => {
-      if (index === idx) {
-        if (isEven(idx)) {
-          if (isIncrementing) {
-            return {
-              backCard: slides[idx],
-              frontCard: slides[idx - 1],
-            };
-          } else {
-            return {
-              backCard: slides[idx],
-              frontCard: slides[idx + 1],
-            };
-          }
-        } else {
-          if (isIncrementing) {
-            return {
-              backCard: slides[idx - 1],
-              frontCard: slides[idx],
-            };
-          } else {
-            return {
-              backCard: slides[idx + 1],
-              frontCard: slides[idx],
-            };
-          }
-        }
-      }
-      return titles;
-    }, {});
-  };
-
-  const renderMenuCard = (project) => {
+  const renderMenucard = (idx) => {
+    if (idx < 0) {
+      return <ProfileComponent />;
+    }
     return (
       <div className={styles.menuContent}>
-        <h1 className={styles.menuTitle}>{project.title}</h1>
+        <h1 className={styles.menuTitle}>{slides[idx].title}</h1>
         <ul>
           <li
             onClick={() => {
-              window.open(project.github, "_blank");
+              window.open(slides[idx].github, "_blank");
             }}
           >
             <FontAwesomeIcon icon={faSquareGithub} /> Git Repository
@@ -84,24 +51,14 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
   };
 
   const renderFlipCard = () => {
-    const { frontCard, backCard } = getMenu(slide, isIncrementing);
-
-    const front =
-      slide < 1 && isIncrementing ? (
-        <ProfileComponent />
-      ) : (
-        renderMenuCard(frontCard)
-      );
-    const back = renderMenuCard(backCard);
     return (
-      <FlipCard
-        front={front}
-        back={back}
-        frontClassName={
+      <FlipCarousel
+        renderCard={renderMenucard}
+        frontClassName={styles.flipCardContentContainer}
+        backClassName={
           slide < 1 && isIncrementing ? "" : styles.flipCardContentContainer
         }
-        backClassName={styles.flipCardContentContainer}
-        isBack={isEven(slide)}
+        index={slide}
       />
     );
   };
@@ -121,14 +78,18 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
             icon={faCircleLeft}
             size="2x"
             color="white"
-            onClick={decrement}
+            onClick={() => {
+              if (idx !== 0) decrement();
+            }}
           />
           <FontAwesomeIcon
             className={styles.slideImgArrowRight}
             icon={faCircleRight}
             size="2x"
             color="white"
-            onClick={increment}
+            onClick={() => {
+              if (project.imgs.length - 1 > idx) increment();
+            }}
           />
         </div>
       );
@@ -144,20 +105,17 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
       if (slide < index) {
         style.transform = "translateX(100vw)";
       }
-      const props = {
-        renderCard: getCard(project),
-        frontClassName: classNames,
-        backClassName: classNames,
-        index: slide,
-      };
-
       return (
         <div
           style={style}
           key={`${index}:${project.title}`}
           className={styles.slideIn}
         >
-          <FlipCarousel {...props} />
+          <FlipCarousel
+            renderCard={getCard(project)}
+            frontClassName={classNames}
+            backClassName={classNames}
+          />
         </div>
       );
     });

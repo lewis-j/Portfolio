@@ -1,14 +1,18 @@
 import styles from "./FlipCarousel.module.css";
 import { isEven } from "../../util";
 import { FlipCard } from "../FlipCard";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
-const FlipCarousel = ({ renderCard, frontClassName, backClassName, index }) => {
+const FlipCarousel = ({
+  renderCard,
+  frontClassName,
+  backClassName,
+  index = null,
+}) => {
   const [slide, setSlide] = useState(0);
   const [isIncrementing, setIsIncrementing] = useState(false);
-  // const [slide, setSlide] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (index === null) return;
     setSlide((prev) => {
       if (prev > index) {
@@ -34,7 +38,7 @@ const FlipCarousel = ({ renderCard, frontClassName, backClassName, index }) => {
   };
 
   const attachCardListeners = (handlers) => (idx) => {
-    return renderCard(idx, handlers);
+    return renderCard(idx, handlers, isIncrementing);
   };
 
   const renderCardWithListeners = attachCardListeners(handleFlips);
@@ -66,8 +70,6 @@ const FlipCarousel = ({ renderCard, frontClassName, backClassName, index }) => {
       }
     }
   };
-  // const shadowClassName = index === 0 ? styles.boxShadow : "";
-  // const _styles = appendStyles(styles.flipCardImg, shadowClassName);
   const { front, back } = getCards(slide);
   return (
     <FlipCard
@@ -76,7 +78,6 @@ const FlipCarousel = ({ renderCard, frontClassName, backClassName, index }) => {
       back={back}
       backClassName={backClassName}
       isBack={!isEven(slide)}
-      // className={styles.projects}
     />
   );
 };
