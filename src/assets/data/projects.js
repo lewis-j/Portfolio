@@ -34,7 +34,7 @@ const projects = [
   {
     title: "3D quizletto",
     content: "my video",
-    imgs: [koana],
+    imgs: koana,
     github: null,
     url: "https://lindseyjackson.onrender.com",
   },

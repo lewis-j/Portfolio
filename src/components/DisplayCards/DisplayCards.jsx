@@ -70,27 +70,36 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
   const getCard = (project) => {
     const renderCard = (idx, cardControls) => {
       const { increment, decrement } = cardControls;
+      const arrowColor = project.imgs[idx].isDark
+        ? styles.arrowDark
+        : styles.arrowLight;
+      const arrowLeftClassName = appendStyles(
+        styles.slideImgArrowLeft,
+        arrowColor
+      );
+      const arrowRightClassName = appendStyles(
+        styles.slideImgArrowRight,
+        arrowColor
+      );
       return (
         <div className={styles.slideImgContainer}>
           <img
-            src={project.imgs[idx]}
+            src={project.imgs[idx].img}
             alt={project.title}
             className={styles.slideImg}
           />
           <FontAwesomeIcon
-            className={styles.slideImgArrowLeft}
+            className={arrowLeftClassName}
             icon={faCircleLeft}
             size="2x"
-            color="white"
             onClick={() => {
               if (idx !== 0) decrement();
             }}
           />
           <FontAwesomeIcon
-            className={styles.slideImgArrowRight}
+            className={arrowRightClassName}
             icon={faCircleRight}
             size="2x"
-            color="white"
             onClick={() => {
               if (project.imgs.length - 1 > idx) increment();
             }}
