@@ -10,9 +10,11 @@ import {
   faLink,
 } from "@fortawesome/free-solid-svg-icons";
 import FlipCarousel from "../FlipCarousel/FlipCarousel";
+import { useState } from "react";
 
 const DisplayCards = ({ slide, slides, isIncrementing }) => {
   const navigate = useNavigate();
+  const [isHidden, setIsHidden] = useState(true);
 
   const ProfileComponent = () => (
     <img
@@ -93,6 +95,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
             icon={faCircleLeft}
             size="2x"
             onClick={() => {
+              setIsHidden(true);
               if (idx !== 0) decrement();
             }}
           />
@@ -101,6 +104,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
             icon={faCircleRight}
             size="2x"
             onClick={() => {
+              setIsHidden(true);
               if (project.imgs.length - 1 > idx) increment();
             }}
           />
@@ -117,12 +121,15 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
       const style = {};
       if (slide < index) {
         style.transform = "translateX(100vw)";
+      } else if (slide > index && isHidden) {
+        style.visibility = "hidden";
       }
       return (
         <div
           style={style}
           key={`${index}:${project.title}`}
           className={styles.slideIn}
+          onTransitionEnd={() => setIsHidden(false)}
         >
           <FlipCarousel
             renderCard={getCard(project)}
