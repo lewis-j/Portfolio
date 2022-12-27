@@ -1,26 +1,19 @@
-import koana from "../img/Koana.png";
-import pitchapp from "../img/projects/pitchapp";
+import { pitchapp, koana, portfolio, paperback } from "../img/projects";
 import space from "../img/space_ripple.jpg";
 import tear from "../img/white-tear.jpg";
-
-console.log(
-  `%cpitch app import:`,
-  "color:red; font-size:14px; font-weight:bold",
-  pitchapp
-);
 
 const projects = [
   {
     title: "Koana",
     content: "my video",
-    imgs: [koana, space, tear, koana, space],
+    imgs: koana,
     github: null,
     url: "https://www.alohakoana.com/",
   },
   {
     title: "PaperBack",
     content: "my video",
-    imgs: [koana],
+    imgs: paperback,
     github: "https://github.com/lewis-j/Paper-back-pals-front-end",
     url: "https://www.paperbackpals.app/",
   },
@@ -34,7 +27,7 @@ const projects = [
   {
     title: "Porfolio",
     content: "my video",
-    imgs: [koana],
+    imgs: portfolio,
     github: "https://github.com/lewis-j/Portfolio",
     url: "https://lindseyjackson.onrender.com",
   },

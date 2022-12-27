@@ -39,7 +39,11 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           >
             <FontAwesomeIcon icon={faSquareGithub} /> Git Repository
           </li>
-          <li>
+          <li
+            onClick={() => {
+              window.open(slides[idx].url, "_blank");
+            }}
+          >
             <FontAwesomeIcon icon={faLink} /> view project
           </li>
           <li>

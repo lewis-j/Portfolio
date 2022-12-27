@@ -109,6 +109,18 @@
   height: var(--slide-containers);
 }
 
+.projectContainer:hover {
+  transform: scale(1.2);
+  transition: 0.25s;
+}
+.projectContainer img {
+  filter: grayscale(0.8);
+}
+
+.projectContainer:hover img {
+  filter: grayscale(0);
+}
+
 .flipCard {
   transition: 1s;
 }
