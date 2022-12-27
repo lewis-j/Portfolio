@@ -1,4 +1,4 @@
-/* .slideImgContainer {
+.slideImgContainer {
   height: 100%;
   width: 100%;
 }
@@ -32,10 +32,10 @@
   box-shadow: var(--neon-box-shadow);
 }
 
-/* .projects {
+.projects {
   position: absolute;
-  transition: 1s; */
-/* border-radius: 5px;
+  transition: 1s;
+  /* border-radius: 5px;
     border: var(--neon-border); */
-/* z-index: 2;
-} */
+  z-index: 2;
+}

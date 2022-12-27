@@ -7,15 +7,12 @@ const FlipCard = ({
   className,
   frontClassName,
   backClassName,
-  style,
-  onFlipEnd,
 }) => {
   return (
-    <div className={appendStyles(styles.flipCard, className)} style={style}>
+    <div className={appendStyles(styles.flipCard, className)}>
       <div
         className={`${styles.flipcardFront} ${frontClassName}`}
         style={isBack ? { transform: "rotateY(-180deg)" } : {}}
-        onTransitionEnd={onFlipEnd}
       >
         {front}
       </div>

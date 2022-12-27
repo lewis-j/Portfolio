@@ -6,7 +6,7 @@ import projects from "../../assets/data/projects";
 import styles from "./Home.module.css";
 
 const Home = ({ offsetSegments }) => {
-  const [isSlidingDown, setIsSlidingDown] = useState(true);
+  const [isIncrementing, setIsIncrementing] = useState(true);
   const [slide, setSlide] = useState(-1);
 
   const { setIsDark } = useThemeContext();
@@ -20,7 +20,7 @@ const Home = ({ offsetSegments }) => {
     if (offset < offsetSegments) {
       if (slide === -1) return;
       setSlide(-1);
-      setIsSlidingDown(true);
+      setIsIncrementing(true);
       return;
     }
     projects.forEach((_, index) => {
@@ -31,7 +31,7 @@ const Home = ({ offsetSegments }) => {
       if (isInRange) {
         if (index === slide) return;
 
-        setIsSlidingDown(slide < index);
+        setIsIncrementing(slide < index);
 
         setSlide(index);
       }
@@ -53,7 +53,7 @@ const Home = ({ offsetSegments }) => {
       <DisplayCards
         slide={slide}
         slides={projects}
-        isSlidingDown={isSlidingDown}
+        isIncrementing={isIncrementing}
       />
       <div className={styles.tabs}>
         {slide >= 0 && (

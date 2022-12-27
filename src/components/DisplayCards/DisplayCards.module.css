@@ -82,6 +82,12 @@
   height: 100%;
 }
 
+.slideIn {
+  position: relative;
+  transition: 2s transform;
+  z-index: 2;
+}
+
 .slideImgArrowLeft,
 .slideImgArrowRight {
   position: absolute;
