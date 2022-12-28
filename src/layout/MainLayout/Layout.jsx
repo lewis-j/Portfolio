@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { appendStyles } from "../../util";
 import projects from "../../assets/data/projects";
 import Footer from "../../layout/Footer/Footer";
@@ -57,7 +56,10 @@ const Layout = ({ children, offsetSegments }) => {
           <span className={styles.threeD}>{"</>"}</span>
         </h1>
         <div className={styles.children}>{children}</div>
-        <Footer navLinks={navLinks} />
+        <Footer
+          navLinks={navLinks}
+          isCyclingText={window.pageYOffset < offsetSegments}
+        />
       </div>
     </div>
   );

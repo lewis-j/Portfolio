@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useThemeContext } from "../../context/ThemeContext/Theme";
 import styles from "./CyclingText.module.css";
 
-const CyclingText = ({ textList }) => {
+const CyclingText = ({ textList, isCyclingText, animationTime }) => {
   const [textIndex, setTextIndex] = useState(0);
   const { transitionClass } = useThemeContext();
 
   useEffect(() => {
-    console.log("running useeffect");
+    if (!isCyclingText) return;
     const intervalId = setInterval(() => {
       setTextIndex((prev) => {
         if (prev === textList.length - 1) {
@@ -15,16 +15,27 @@ const CyclingText = ({ textList }) => {
         }
         return prev + 1;
       });
-    }, 2000);
+    }, animationTime);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [isCyclingText]);
+
+  const Title = ({ text }) => {
+    return (
+      <h3
+        className={styles.title}
+        style={{ animationDuration: `${animationTime}ms` }}
+      >
+        {text}
+      </h3>
+    );
+  };
 
   return (
     <div className={`${styles.container} ${transitionClass}`}>
-      <h3>{textList[textIndex]}</h3>
+      <Title text={textList[textIndex]} />
     </div>
   );
 };

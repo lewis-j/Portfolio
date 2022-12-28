@@ -11,7 +11,7 @@ import {
   aboutMe,
 } from "../../assets/data/aboutContent";
 
-const About = () => {
+const About = ({ animationTime = 500 }) => {
   const { setIsDark } = useThemeContext();
   const [isDownLoading, setIsDownLoading] = useState(false);
 
@@ -57,12 +57,27 @@ const About = () => {
 
   return (
     <div className={appendStyles(styles.wrapper)}>
-      <div className={appendStyles(styles.container, styles.spaceBackground)}>
+      <div
+        className={appendStyles(styles.container, styles.spaceBackground)}
+        style={{ animationDuration: `${animationTime}ms` }}
+      >
         <div className={styles.about}>
-          <div className={styles.aboutImg}>
+          <div
+            className={styles.aboutImg}
+            style={{
+              animationDuration: `${animationTime / 2}ms`,
+              animationDelay: `${animationTime * 0.75}ms`,
+            }}
+          >
             <img src={aboutPic} alt="lindsey's portrait" />
           </div>
-          <div className={styles.content}>
+          <div
+            className={styles.content}
+            style={{
+              animationDuration: `${animationTime / 2}ms`,
+              animationDelay: `${animationTime}ms`,
+            }}
+          >
             <div className={styles.section}>
               <h3 className={styles.title}>Who am I?</h3>
               <div className={styles.aboutMe}>{aboutMe}</div>

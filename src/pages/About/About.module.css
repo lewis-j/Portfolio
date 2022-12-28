@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: scaleUp 1.5s ease-out forwards;
+  animation: scaleUp ease-out forwards;
   border-radius: 50%;
 
   z-index: 800;
@@ -36,6 +36,7 @@
   background-image: url("../../assets/img/space.jpg");
   background-size: contain;
   border-radius: 50%;
+  filter: grayscale(1);
 }
 
 .about {
@@ -43,7 +44,6 @@
   color: rgb(255, 255, 255);
   height: 70vh;
   width: 100vw;
-  background-image: linear-gradient(181deg, black, #000000b5);
   background-size: 100vw 100%;
   display: flex;
   justify-content: center;
@@ -53,7 +53,9 @@
 
 .content {
   display: flex;
-  flex-flow: column wrap;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-flow: column nowrap;
   width: 60vw;
   max-width: 60rem;
   background: var(--about-content);
@@ -63,6 +65,8 @@
   border-radius: 15px;
   margin-right: 1rem;
   padding: 2rem;
+  transform: scale(0);
+  animation: scaleUp ease-in forwards;
 }
 
 .resume {
@@ -89,6 +93,8 @@
   --about-img-size: 70vh;
   width: var(--about-img-size);
   height: var(--about-img-size);
+  transform: scale(0);
+  animation: scaleUp ease-in forwards;
 }
 .aboutImg img {
   width: 100%;
@@ -103,20 +109,15 @@
 }
 
 .aboutMe {
-  --gradient-width: 10dpx;
-  background: linear-gradient(
-      to top,
-      #000000,
-      transparent var(--gradient-width)
-    ),
-    linear-gradient(to right, #000000, transparent var(--gradient-width)),
-    linear-gradient(to bottom, #000000, transparent var(--gradient-width)),
-    linear-gradient(to left, #000000, transparent var(--gradient-width));
-  background-color: rgba(255, 255, 255, 0.575);
+  position: relative;
+  background-color: white;
+  box-shadow: 0 0 0.5em var(--tertiaryHighlightColor),
+    inset 0 0 1em var(--tertiaryHighlightColor);
+  background-size: 100% 100%;
   color: black;
-  min-height: 6rem;
+  min-height: 6em;
   border-radius: 15px;
-  padding: 5px;
+  padding: 1em;
 }
 
 .list {
