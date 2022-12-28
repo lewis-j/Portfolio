@@ -29,6 +29,7 @@
   text-shadow: var(--neon-text-shadow);
   border-radius: var(--borderRadius);
   padding: var(--padding);
+  cursor: pointer;
 }
 .menuContent li:hover,
 .menuContent li:active {
@@ -52,6 +53,37 @@
   /* border-radius: 5px;
   border: var(--neon-border); */
   z-index: 2;
+}
+
+.readMe {
+  position: relative;
+  padding: 1em;
+  background-color: var(--darkThemeColor);
+  height: 150%;
+  transform: translateY(-20%);
+  border: var(--darkThemeColor);
+  box-shadow: inset 0 0 5px var(--lightThemeColor);
+  border-radius: var(--borderRadius);
+}
+
+.readMeTitle {
+}
+.badgeList {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2px;
+}
+.badge {
+  padding: 0px 5px;
+  background-color: var(--lightThemeColor);
+  color: var(--darkThemeColor);
+  border-radius: var(--borderRadius);
+}
+
+.closeBtn {
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
 }
 
 .flipCardImg {
@@ -92,6 +124,7 @@
 .slideImgArrowRight {
   position: absolute;
   bottom: 1em;
+  cursor: pointer;
 }
 
 .slideImgArrowLeft {

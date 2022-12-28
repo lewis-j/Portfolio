@@ -10,11 +10,18 @@ import {
   faLink,
 } from "@fortawesome/free-solid-svg-icons";
 import FlipCarousel from "../FlipCarousel/FlipCarousel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { FlipCard } from "../FlipCard";
+import CloseBtn from "../CloseBtn/CloseBtn";
 
 const DisplayCards = ({ slide, slides, isIncrementing }) => {
   const navigate = useNavigate();
   const [isHidden, setIsHidden] = useState(true);
+  const [isReadMe, setIsReadMe] = useState(false);
+
+  useEffect(() => {
+    setIsReadMe(false);
+  }, [slide]);
 
   const ProfileComponent = () => (
     <img
@@ -48,7 +55,11 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           >
             <FontAwesomeIcon icon={faLink} /> view project
           </li>
-          <li>
+          <li
+            onClick={() => {
+              setIsReadMe(true);
+            }}
+          >
             <FontAwesomeIcon icon={faReadme} /> read me
           </li>
         </ul>
@@ -114,6 +125,16 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
     return renderCard;
   };
 
+  const renderBadges = (badgeList) =>
+    badgeList.map((badge, index) => (
+      <span
+        key={`${badge}${index}${Math.random() * index}`}
+        className={styles.badge}
+      >
+        {badge}
+      </span>
+    ));
+
   const renderSlides = () => {
     return slides.map((project, index) => {
       const shadowClassName = index === 0 ? styles.boxShadow : "";
@@ -124,6 +145,26 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
       } else if (slide > index && isHidden) {
         style.visibility = "hidden";
       }
+
+      const renderFlipCarousel = () => {
+        return (
+          <FlipCarousel
+            renderCard={getCard(project)}
+            frontClassName={classNames}
+            backClassName={classNames}
+          />
+        );
+      };
+
+      const readMe = (
+        <div className={styles.readMe}>
+          <div className={styles.closeBtn} onClick={() => setIsReadMe(false)}>
+            <CloseBtn isOpen={isReadMe} />
+          </div>
+          <h3 className={styles.readMeTitle}>Project Overview</h3>
+          <div className={styles.badgeList}>{renderBadges(project.badges)}</div>
+        </div>
+      );
       return (
         <div
           style={style}
@@ -131,10 +172,11 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           className={styles.slideIn}
           onTransitionEnd={() => setIsHidden(false)}
         >
-          <FlipCarousel
-            renderCard={getCard(project)}
-            frontClassName={classNames}
-            backClassName={classNames}
+          <FlipCard
+            front={renderFlipCarousel()}
+            back={readMe}
+            isBack={isReadMe}
+            flipX={true}
           />
         </div>
       );

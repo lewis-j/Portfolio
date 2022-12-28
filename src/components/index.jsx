@@ -4,3 +4,4 @@ export { SocialLink } from "./SocialLink";
 export { Tabs } from "./Tabs";
 export { default as DisplayCards } from "./DisplayCards/DisplayCards";
 export { default as FlipCarousel } from "./FlipCarousel/FlipCarousel";
+export { default as CloseBtn } from "./CloseBtn/CloseBtn";

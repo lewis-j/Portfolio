@@ -1,10 +1,17 @@
 import { pitchapp, koana, portfolio, paperback } from "../img/projects";
-import space from "../img/space_ripple.jpg";
-import tear from "../img/white-tear.jpg";
+
+// const readMes = [{title: "koana", badges:}]
 
 const projects = [
   {
     title: "Koana",
+    badges: [
+      "ReactJS",
+      "TypeScript",
+      "Express",
+      "SquarePaymentAPI",
+      "CSSModules",
+    ],
     content: "my video",
     imgs: koana,
     github: null,
@@ -12,6 +19,19 @@ const projects = [
   },
   {
     title: "PaperBack",
+    badges: [
+      "ReactJS",
+      "NestJS",
+      "TypeScript",
+      "MongoDB",
+      "Mongoose",
+      "ReactStrap",
+      "Firebase",
+      "PassportJS",
+      "Axios",
+      "SCSSModules",
+      "JSONWEBTOKENS",
+    ],
     content: "my video",
     imgs: paperback,
     github: "https://github.com/lewis-j/Paper-back-pals-front-end",
@@ -19,6 +39,15 @@ const projects = [
   },
   {
     title: "pitchApp",
+    badges: [
+      "Javascript",
+      "Jquery",
+      "Bootstrap",
+      "PHP",
+      "MySql",
+      "AJAX",
+      "DOM",
+    ],
     content: "my video",
     imgs: pitchapp,
     github: "https://github.com/lewis-j/pitchApp",
@@ -26,6 +55,7 @@ const projects = [
   },
   {
     title: "Porfolio",
+    badges: ["ReactJS"],
     content: "my video",
     imgs: portfolio,
     github: "https://github.com/lewis-j/Portfolio",
@@ -34,6 +64,7 @@ const projects = [
   {
     title: "3D quizletto",
     content: "my video",
+    badges: [],
     imgs: koana,
     github: null,
     url: "https://lindseyjackson.onrender.com",
