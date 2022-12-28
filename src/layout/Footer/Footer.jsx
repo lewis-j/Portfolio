@@ -12,7 +12,7 @@ const Footer = ({ navLinks, isCyclingText }) => {
       <CyclingText
         textList={cyclingText}
         isCyclingText={isCyclingText}
-        animationTime={3000}
+        animationTime={2000}
       />
       <SocialLinks />
     </div>

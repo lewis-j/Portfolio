@@ -1,8 +1,11 @@
 const cyclingText = [
   "Full-Stack Developer",
   "Self-taught",
-  "Elegant Code",
+  "Clean Code",
+  "UI/UX designer",
   "Problem Solver",
+  "5 years experience",
+  "collaborative",
 ];
 
 export default cyclingText;

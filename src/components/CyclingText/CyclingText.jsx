@@ -8,6 +8,7 @@ const CyclingText = ({ textList, isCyclingText, animationTime }) => {
 
   useEffect(() => {
     if (!isCyclingText) return;
+
     const intervalId = setInterval(() => {
       setTextIndex((prev) => {
         if (prev === textList.length - 1) {
@@ -26,7 +27,7 @@ const CyclingText = ({ textList, isCyclingText, animationTime }) => {
     return (
       <h3
         className={styles.title}
-        style={{ animationDuration: `${animationTime}ms` }}
+        style={isCyclingText ? { animationDuration: `${animationTime}ms` } : {}}
       >
         {text}
       </h3>
