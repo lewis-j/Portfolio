@@ -1,6 +1,16 @@
 import { pitchapp, koana, portfolio, paperback } from "../img/projects";
 
-// const readMes = [{title: "koana", badges:}]
+const overViews = [
+  {
+    title: "Koana",
+    overView:
+      "Koana is an award-winning coffee shop in Hawaii that provides a variety of locally grown coffees, teas, and chocolates. A fellow Bootcamp alumnus, [Benny Malberg](https://www.linkedin.com/in/benjamin-malberg/), asked me to help create an updated website for Koana. I developed the server code using Express and Typescript to communicate with the square POS API. Fortunately, Square provides a node package for communicating with their API, which I could leverage to offer online-specific items for sale. I created a persisted cart using the square '/orders' endpoints. I also helped to structure and organize the client-side code using react convention, which would help our website to scale more effectively as our client requested new features.",
+  },
+  { title: "PaperBack Pals", overView: "test" },
+  { title: "Pitch Tracker", overView: "test" },
+  { title: "Portfolio", overView: "test" },
+  // { title: "3D quiz", overView: "test" },
+];
 
 const projects = [
   {
@@ -18,7 +28,7 @@ const projects = [
     url: "https://www.alohakoana.com/",
   },
   {
-    title: "PaperBack",
+    title: "PaperBack Pals",
     badges: [
       "ReactJS",
       "NestJS",
@@ -38,7 +48,7 @@ const projects = [
     url: "https://www.paperbackpals.app/",
   },
   {
-    title: "pitchApp",
+    title: "Pitch Tracker",
     badges: [
       "Javascript",
       "Jquery",
@@ -54,7 +64,7 @@ const projects = [
     url: "https://www.lindseyljackson.com/Sites/PitchApp/",
   },
   {
-    title: "Porfolio",
+    title: "Portfolio",
     badges: ["ReactJS"],
     content: "my video",
     imgs: portfolio,
@@ -62,7 +72,7 @@ const projects = [
     url: "https://lindseyjackson.onrender.com",
   },
   {
-    title: "3D quizletto",
+    title: "3D quiz",
     content: "my video",
     badges: [],
     imgs: koana,
@@ -71,4 +81,17 @@ const projects = [
   },
 ];
 
-export default projects;
+const _projects = projects.map((project) => {
+  const result = overViews.find(({ title }) => project.title === title);
+  if (result?.overView) {
+    return { ...project, overView: result.overView };
+  }
+  return project;
+});
+console.log(
+  `%cprojects:`,
+  "color:green; font-size:14px; font-weight:bold",
+  _projects
+);
+
+export default _projects;

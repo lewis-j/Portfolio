@@ -1,7 +1,7 @@
 import styles from "./DisplayCards.module.css";
 import profile from ".././../assets/img/about_portrait.jpg";
 import { useNavigate } from "../../lib/router/Router";
-import { appendStyles } from "../../util";
+import { appendStyles, convertMarkDownToJsxLinks } from "../../util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReadme, faSquareGithub } from "@fortawesome/free-brands-svg-icons";
 import {
@@ -163,6 +163,9 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           </div>
           <h3 className={styles.readMeTitle}>Project Overview</h3>
           <div className={styles.badgeList}>{renderBadges(project.badges)}</div>
+          <div className={styles.description}>
+            {convertMarkDownToJsxLinks(project.overView)}
+          </div>
         </div>
       );
       return (
@@ -170,7 +173,14 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           style={style}
           key={`${index}:${project.title}`}
           className={styles.slideIn}
-          onTransitionEnd={() => setIsHidden(false)}
+          onTransitionEnd={(e) => {
+            const isClass = [...e.target.classList].some((className) => {
+              return className === styles.flipCardImg;
+            });
+            if (isClass) {
+              setIsHidden(false);
+            }
+          }}
         >
           <FlipCard
             front={renderFlipCarousel()}

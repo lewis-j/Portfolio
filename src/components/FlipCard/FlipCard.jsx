@@ -9,26 +9,32 @@ const FlipCard = ({
   backClassName,
   flipX = false,
 }) => {
-  const axis = flipX ? "X" : "Y";
+  const getRotations = () => {
+    if (flipX) {
+      if (isBack) {
+        return [styles.frontRotateX, styles.zeroX];
+      } else {
+        return [styles.zeroX, styles.backRotateX];
+      }
+    } else {
+      if (isBack) {
+        return [styles.frontRotateY, styles.zeroY];
+      } else {
+        return [styles.zeroY, styles.backRotateY];
+      }
+    }
+  };
+  const [frontRotation, backRotation] = getRotations();
+
   return (
     <div className={appendStyles(styles.flipCard, className)}>
       <div
-        className={`${styles.flipcardFront} ${frontClassName}`}
-        style={
-          isBack
-            ? { transform: `rotate${axis}(-180deg)` }
-            : { transform: `rotate${axis}(0)` }
-        }
+        className={`${styles.flipcardFront} ${frontClassName} ${frontRotation}`}
       >
         {front}
       </div>
       <div
-        className={`${styles.flipcardBack} ${backClassName}`}
-        style={
-          isBack
-            ? { transform: `rotate${axis}(0)` }
-            : { transform: `rotate${axis}(180deg)` }
-        }
+        className={`${styles.flipcardBack} ${backClassName} ${backRotation}`}
       >
         {back}
       </div>

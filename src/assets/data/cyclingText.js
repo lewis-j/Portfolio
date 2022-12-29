@@ -1,5 +1,7 @@
 const cyclingText = [
   "Full-Stack Developer",
+  "Creative",
+  "Self-Sufficient",
   "Self-taught",
   "Clean Code",
   "UI/UX designer",

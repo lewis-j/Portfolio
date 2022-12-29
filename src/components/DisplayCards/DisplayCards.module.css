@@ -15,6 +15,11 @@
   align-items: center;
   margin: 0;
 }
+
+.menuContent h1 {
+  text-align: center;
+  letter-spacing: var(--letter-spacing-small);
+}
 .menuContent ul {
   display: flex;
   flex-direction: column;
@@ -56,6 +61,7 @@
 }
 
 .readMe {
+  overflow: auto;
   position: relative;
   padding: 1em;
   background-color: var(--darkThemeColor);
@@ -67,6 +73,7 @@
 }
 
 .readMeTitle {
+  letter-spacing: var(--letter-spacing-small);
 }
 .badgeList {
   display: flex;
@@ -75,6 +82,7 @@
 }
 .badge {
   padding: 0px 5px;
+  letter-spacing: 1px;
   background-color: var(--lightThemeColor);
   color: var(--darkThemeColor);
   border-radius: var(--borderRadius);
@@ -150,10 +158,10 @@
   height: var(--slide-containers);
 }
 
-.projectContainer:hover {
+/* .projectContainer:hover {
   transform: scale(1.2);
   transition: 0.25s;
-}
+} */
 .projectContainer img {
   filter: grayscale(0.8);
 }
