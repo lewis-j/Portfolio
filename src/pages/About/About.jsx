@@ -11,7 +11,7 @@ import {
   aboutMe,
 } from "../../assets/data/aboutContent";
 
-const About = ({ animationTime = 500 }) => {
+const About = ({ animationTime = 600 }) => {
   const { setIsDark } = useThemeContext();
   const [isDownLoading, setIsDownLoading] = useState(false);
 
@@ -58,8 +58,11 @@ const About = ({ animationTime = 500 }) => {
   return (
     <div className={appendStyles(styles.wrapper)}>
       <div
-        className={appendStyles(styles.container, styles.spaceBackground)}
-        style={{ animationDuration: `${animationTime}ms` }}
+        className={appendStyles(styles.container)}
+        style={{
+          animationDuration: `${animationTime}ms`,
+          // animationDelay: "2s",
+        }}
       >
         <div className={styles.about}>
           <div

@@ -20,7 +20,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: scale(0);
   animation: scaleUp ease-out forwards;
+  animation-delay: 0.1s;
   border-radius: 50%;
 
   z-index: 800;
@@ -94,7 +96,7 @@
   width: var(--about-img-size);
   height: var(--about-img-size);
   transform: scale(0);
-  animation: scaleUp ease-in forwards;
+  animation: scaleUp ease-in-out forwards;
 }
 .aboutImg img {
   width: 100%;
