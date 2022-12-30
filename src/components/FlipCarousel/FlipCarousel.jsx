@@ -7,6 +7,7 @@ const FlipCarousel = ({
   renderCard,
   frontClassName,
   backClassName,
+  className,
   index = null,
 }) => {
   const [slide, setSlide] = useState(0);
@@ -74,6 +75,7 @@ const FlipCarousel = ({
   return (
     <FlipCard
       front={front}
+      className={className}
       frontClassName={frontClassName}
       back={back}
       backClassName={backClassName}

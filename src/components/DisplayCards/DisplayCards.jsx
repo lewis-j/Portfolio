@@ -57,7 +57,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           </li>
           <li
             onClick={() => {
-              setIsReadMe(true);
+              setIsReadMe(!isReadMe);
             }}
           >
             <FontAwesomeIcon icon={faReadme} /> read me
@@ -149,6 +149,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
       const renderFlipCarousel = () => {
         return (
           <FlipCarousel
+            className={styles.projects}
             renderCard={getCard(project)}
             frontClassName={classNames}
             backClassName={classNames}
