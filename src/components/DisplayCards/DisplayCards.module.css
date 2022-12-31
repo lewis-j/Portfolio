@@ -94,6 +94,10 @@
   top: 0.5em;
 }
 
+.description {
+  white-space: pre-wrap;
+}
+
 .flipCardImg {
   border-radius: 5px;
   border: var(--neon-border);

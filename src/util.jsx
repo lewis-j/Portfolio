@@ -14,7 +14,11 @@ export const convertMarkDownToJsxLinks = (text) => {
   let index = 0;
   while (matched) {
     buildString.push(remaining.slice(0, matched.index));
-    buildString.push(<a href={matched[2]}>{matched[1]}</a>);
+    buildString.push(
+      <a href={matched[2]} target="_blank" rel="noopener noreferrer">
+        {matched[1]}
+      </a>
+    );
     index = matched.index + matched[0].length;
     remaining = remaining.slice(index);
     matched = remaining.match(regex);

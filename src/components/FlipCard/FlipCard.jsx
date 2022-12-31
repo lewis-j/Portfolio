@@ -24,6 +24,7 @@ const FlipCard = ({
       }
     }
   };
+
   const [frontRotation, backRotation] = getRotations();
 
   return (

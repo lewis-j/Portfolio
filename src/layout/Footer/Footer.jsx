@@ -1,6 +1,6 @@
 import React from "react";
 import { cyclingText } from "../../assets";
-import { CyclingText } from "../../components";
+import { CyclingText, TypingText } from "../../components";
 import { SocialLinks } from "./layout/SocialLinks/SocialLinks";
 import styles from "./Footer.module.css";
 import { Nav } from "./layout/Nav/Nav";
@@ -14,6 +14,7 @@ const Footer = ({ navLinks, isCyclingText }) => {
         isCyclingText={isCyclingText}
         animationTime={2000}
       />
+      <TypingText textList={cyclingText} />
       <SocialLinks />
     </div>
   );

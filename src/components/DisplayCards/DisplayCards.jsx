@@ -10,7 +10,7 @@ import {
   faLink,
 } from "@fortawesome/free-solid-svg-icons";
 import FlipCarousel from "../FlipCarousel/FlipCarousel";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { FlipCard } from "../FlipCard";
 import CloseBtn from "../CloseBtn/CloseBtn";
 
@@ -19,8 +19,9 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
   const [isHidden, setIsHidden] = useState(true);
   const [isReadMe, setIsReadMe] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setIsReadMe(false);
+    setIsHidden(false);
   }, [slide]);
 
   const ProfileComponent = () => (
@@ -143,6 +144,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
       if (slide < index) {
         style.transform = "translateX(100vw)";
       } else if (slide > index && isHidden) {
+        console.log("hide");
         style.visibility = "hidden";
       }
 
@@ -156,6 +158,18 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           />
         );
       };
+      const renderDescription = (overView) => {
+        if (!overView) return null;
+        console.log("overview", overView);
+        return overView.map(({ title, text }, idx) => (
+          <div key={idx + title}>
+            <h3 className={styles.overViewTitle}>{title}</h3>
+            <div className={styles.overViewContent}>
+              {convertMarkDownToJsxLinks(text)}
+            </div>
+          </div>
+        ));
+      };
 
       const readMe = (
         <div className={styles.readMe}>
@@ -165,7 +179,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           <h3 className={styles.readMeTitle}>Project Overview</h3>
           <div className={styles.badgeList}>{renderBadges(project.badges)}</div>
           <div className={styles.description}>
-            {convertMarkDownToJsxLinks(project.overView)}
+            {renderDescription(project.overView)}
           </div>
         </div>
       );
@@ -176,10 +190,10 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           className={styles.slideIn}
           onTransitionEnd={(e) => {
             const isClass = [...e.target.classList].some((className) => {
-              return className === styles.flipCardImg;
+              return className === styles.slideIn;
             });
             if (isClass) {
-              setIsHidden(false);
+              setIsHidden(true);
             }
           }}
         >
