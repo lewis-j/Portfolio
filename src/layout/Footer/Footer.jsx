@@ -14,7 +14,7 @@ const Footer = ({ navLinks, isCyclingText }) => {
         isCyclingText={isCyclingText}
         animationTime={2000}
       />
-      <TypingText textList={cyclingText} />
+      {/* <TypingText textList={cyclingText} /> */}
       <SocialLinks />
     </div>
   );
