@@ -10,7 +10,7 @@ import {
   faLink,
 } from "@fortawesome/free-solid-svg-icons";
 import FlipCarousel from "../FlipCarousel/FlipCarousel";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { FlipCard } from "../FlipCard";
 import CloseBtn from "../CloseBtn/CloseBtn";
 
@@ -208,7 +208,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
     });
   };
   const offsetProfilePic = {
-    transform: "translateX(11rem)",
+    transform: "translateX(25vh)",
   };
 
   return (

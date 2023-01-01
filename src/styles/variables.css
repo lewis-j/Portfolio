@@ -34,7 +34,7 @@
   --letter-spacing-small: 3px;
 
   /*sizing*/
-  --slide-containers: 300px;
+  --slide-containers: 45vh;
 
   /*misc*/
   --pointer-cursor: pointer;

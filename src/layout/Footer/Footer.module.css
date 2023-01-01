@@ -1,12 +1,13 @@
 .footer {
   display: flex;
+  flex-direction: column;
   width: 100%;
   margin: 0 2rem;
+  gap: 1rem;
   align-items: center;
   justify-content: space-around;
 }
 
-.footer > div {
-  width: 33%;
+.footer > div:nth-child(1) {
   z-index: 1000;
 }

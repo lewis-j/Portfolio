@@ -1,8 +1,9 @@
 .container {
   letter-spacing: var(--letter-spacing-large);
   text-transform: uppercase;
-  width: 18em;
+  width: 100%;
   text-align: center;
+  margin-top: 2rem;
 }
 
 .title {

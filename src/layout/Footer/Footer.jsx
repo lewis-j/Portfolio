@@ -9,13 +9,13 @@ const Footer = ({ navLinks, isCyclingText }) => {
   return (
     <div className={styles.footer}>
       <Nav navLinks={navLinks} />
+      <SocialLinks />
       <CyclingText
         textList={cyclingText}
         isCyclingText={isCyclingText}
         animationTime={2000}
       />
       {/* <TypingText textList={cyclingText} /> */}
-      <SocialLinks />
     </div>
   );
 };
