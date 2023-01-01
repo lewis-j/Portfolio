@@ -11,6 +11,7 @@
 
 .children {
   height: 65vh;
+  width: 100%;
 }
 .slidingBackground {
   position: absolute;

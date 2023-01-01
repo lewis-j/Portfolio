@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { appendStyles } from "../../util";
 import styles from "./About.module.css";
 import aboutPic from "../../assets/img/about_pic.png";
@@ -15,12 +15,14 @@ const About = ({ animationTime = 600 }) => {
   const { setIsDark } = useThemeContext();
   const [isDownLoading, setIsDownLoading] = useState(false);
 
+  const [slide, setSlide] = useState(0);
+
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-    setIsDark(true);
-    return () => {
-      document.body.style.overflow = "visible";
-    };
+    // document.body.style.overflow = "hidden";
+    // setIsDark(true);
+    // return () => {
+    //   document.body.style.overflow = "visible";
+    // };
   }, []);
 
   const handleDownload = async () => {
@@ -50,62 +52,37 @@ const About = ({ animationTime = 600 }) => {
     });
   };
 
+  const renderSlides = (slides) => {
+    return slides.map((item, idx) => {
+      //https://stackoverflow.com/questions/10247255/css-transition-between-left-right-and-top-bottom-positions
+      const style = { left: "0", transform: "translateX(0)" };
+      if (slide < idx) {
+        style.transform = "translateX(-100%)";
+        style.left = "100%";
+      }
+      return (
+        <section
+          className={styles.section}
+          key={idx + item}
+          style={style}
+          onClick={() => setSlide((prev) => prev + 1)}
+        >
+          {item}
+        </section>
+      );
+    });
+  };
+
   const joinedFrameWorksAndLibraries = frameworksAndLibraries.map(
     (itemSet, i) =>
       itemSet.map((item, j) => <div key={`${item} ${i}${j}`}>{item}</div>)
   );
+  const slides = ["picture", "About", "skills"];
 
   return (
-    <div className={appendStyles(styles.wrapper)}>
-      <div
-        className={appendStyles(styles.container)}
-        style={{
-          animationDuration: `${animationTime}ms`,
-          // animationDelay: "2s",
-        }}
-      >
-        <div className={styles.about}>
-          <div
-            className={styles.aboutImg}
-            style={{
-              animationDuration: `${animationTime / 2}ms`,
-              animationDelay: `${animationTime * 0.75}ms`,
-            }}
-          >
-            <img src={aboutPic} alt="lindsey's portrait" />
-          </div>
-          <div
-            className={styles.content}
-            style={{
-              animationDuration: `${animationTime / 2}ms`,
-              animationDelay: `${animationTime}ms`,
-            }}
-          >
-            <div className={styles.section}>
-              <h3 className={styles.title}>Who am I?</h3>
-              <div className={styles.aboutMe}>{aboutMe}</div>
-            </div>
-            <div className={styles.section}>
-              <h3 className={styles.title}>Prominent skills</h3>
-              <div className={styles.list}>{renderList(skillsList)}</div>
-            </div>
-            <div className={styles.section}>
-              <h3 className={styles.title}>Frameworks/Libraries</h3>
-              <div className={styles.list}>
-                {renderList(joinedFrameWorksAndLibraries)}
-              </div>
-            </div>
-            <div className={styles.resume} onClick={handleDownload}>
-              <span>Download Resume</span>
-              {isDownLoading ? (
-                <FontAwesomeIcon spin icon={faSpinner} />
-              ) : (
-                <FontAwesomeIcon icon={faDownload} />
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className={styles.container}>
+      <div className={styles.background}></div>
+      <div className={styles.slidingSections}>{renderSlides(slides)}</div>
     </div>
   );
 };
