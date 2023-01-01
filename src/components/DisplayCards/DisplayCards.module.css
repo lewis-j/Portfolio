@@ -56,7 +56,7 @@
 }
 
 .projects:hover {
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 
 .readMe {
@@ -66,12 +66,24 @@
   background-color: var(--darkThemeColor);
   height: 133%;
   width: 120%;
-  transform: translate(-8%, -23%);
+  transform: translate(-8%, -25%);
   border: var(--darkThemeColor);
   box-shadow: inset 0 0 5px var(--lightThemeColor);
   border-radius: var(--borderRadius);
 }
 
+.readMe::-webkit-scrollbar {
+  background-color: white;
+}
+.readMe::-webkit-scrollbar-thumb {
+  background-color: black;
+  color: white;
+  border-radius: 15px;
+  box-shadow: inset 1px 1px 4px 1px rgb(255, 255, 255);
+}
+.readMe::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
+}
 .readMeTitle {
   letter-spacing: var(--letter-spacing-small);
 }
