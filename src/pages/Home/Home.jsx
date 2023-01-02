@@ -4,50 +4,22 @@ import { useThemeContext } from "../../context/ThemeContext/Theme";
 import projects from "../../assets/data/projects";
 
 import styles from "./Home.module.css";
+import useScroll from "../../hooks/useScroll";
 
 const Home = ({ offsetSegments }) => {
-  const [isIncrementing, setIsIncrementing] = useState(true);
-  const [slide, setSlide] = useState(-1);
-
   const { setIsDark } = useThemeContext();
+  const {
+    setScrollPosition,
+    slide: _slide,
+    isIncrementing,
+  } = useScroll(projects.length + 1, offsetSegments);
+
+  const slide = _slide - 1;
 
   useEffect(() => {
     setIsDark(slide !== -1);
   }, [slide]);
 
-  const _handleScroll = (e) => {
-    const offset = window.pageYOffset;
-    if (offset < offsetSegments) {
-      if (slide === -1) return;
-      setSlide(-1);
-      setIsIncrementing(true);
-      return;
-    }
-    projects.forEach((_, index) => {
-      const lowRange = (index + 1) * offsetSegments;
-      const highRange = lowRange + offsetSegments;
-
-      const isInRange = offset > lowRange && offset < highRange;
-      if (isInRange) {
-        if (index === slide) return;
-
-        setIsIncrementing(slide < index);
-
-        setSlide(index);
-      }
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", _handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", _handleScroll);
-    };
-  });
-  const setScrollPosition = (slideIndex) => {
-    window.scrollTo(0, slideIndex * offsetSegments + 1);
-  };
   return (
     <div className={styles.slidingContainer}>
       <DisplayCards

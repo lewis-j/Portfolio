@@ -5,6 +5,8 @@
 
 .flipcardFront,
 .flipcardBack {
+  transform-style: preserve-3d;
+  perspective: inherit;
   transition: transform 1s;
   height: var(--slide-containers);
   position: absolute;
