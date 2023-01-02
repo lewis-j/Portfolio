@@ -20,7 +20,7 @@ export const Popup = ({ isOpen, hoverTimout, handleSetTimout, children }) => {
       onMouseLeave={() => handleSetTimout(hoverTimout)}
     >
       {children}
-      <div className={appendStyles(styles.borderBottom)} style={borderBottom} />
+      <div className={appendStyles(styles.borderTop)} style={borderBottom} />
     </div>
   );
 };

@@ -19,7 +19,7 @@ const About = ({ animationTime = 600 }) => {
 
   useEffect(() => {
     // document.body.style.overflow = "hidden";
-    // setIsDark(true);
+    setIsDark(true);
     // return () => {
     //   document.body.style.overflow = "visible";
     // };
