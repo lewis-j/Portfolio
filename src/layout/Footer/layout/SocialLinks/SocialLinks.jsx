@@ -14,7 +14,7 @@ import { Popup } from "../../../../components/Popup/Popup";
 import { useThemeContext } from "../../../../context/ThemeContext/Theme";
 
 export const SocialLinks = () => {
-  const { themeClass, transitionClass } = useThemeContext();
+  const { transitionClass } = useThemeContext();
 
   const [emailIsOpen, setEmailIsOpen] = useState(false);
   const [hoverTimout, setHoverTimout] = useState();

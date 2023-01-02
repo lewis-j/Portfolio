@@ -17,7 +17,7 @@ const useScroll = (length, offsetSegments) => {
       const lowRange = index * offsetSegments;
       const highRange = lowRange + offsetSegments;
 
-      const isInRange = offset > lowRange && offset < highRange;
+      const isInRange = offset >= lowRange && offset < highRange;
       if (isInRange) {
         if (index === slide) return;
 
