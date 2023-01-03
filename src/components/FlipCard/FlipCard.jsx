@@ -28,16 +28,18 @@ const FlipCard = ({
   const [frontRotation, backRotation] = getRotations();
 
   return (
-    <div className={appendStyles(styles.flipCard, className)}>
-      <div
-        className={`${styles.flipcardFront} ${frontClassName} ${frontRotation}`}
-      >
-        {front}
-      </div>
-      <div
-        className={`${styles.flipcardBack} ${backClassName} ${backRotation}`}
-      >
-        {back}
+    <div className={appendStyles(styles.scene, className)}>
+      <div className={appendStyles(styles.flipCard)}>
+        <div
+          className={`${styles.flipcardFront} ${frontClassName} ${frontRotation}`}
+        >
+          {front}
+        </div>
+        <div
+          className={`${styles.flipcardBack} ${backClassName} ${backRotation}`}
+        >
+          {back}
+        </div>
       </div>
     </div>
   );

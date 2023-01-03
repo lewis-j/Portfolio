@@ -12,7 +12,7 @@ function App() {
   const navigate = useNavigate();
   const { setIsDark } = useThemeContext();
 
-  const offsetSegments = 300;
+  const offsetSegments = 500;
   const projectScrollHeight = offsetSegments * projects.length + 1;
   const aboutScrollHeight = offsetSegments * 4;
   const [layoutHeight, setHeight] = useState(projectScrollHeight);

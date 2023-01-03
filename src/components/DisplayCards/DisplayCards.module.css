@@ -52,7 +52,8 @@
   background-color: black;
 }
 .projects {
-  transition: 0.25s;
+  position: absolute;
+  transition: transform 0.25s;
 }
 
 .projects:hover {

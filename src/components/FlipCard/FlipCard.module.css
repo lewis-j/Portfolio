@@ -1,18 +1,25 @@
+.scene {
+  height: var(--slide-containers);
+  width: var(--slide-containers);
+  perspective: 2000px;
+}
 .flipCard {
   position: relative;
-  width: var(--slide-containers);
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
 }
 
 .flipcardFront,
 .flipcardBack {
   /* transform-style: preserve-3d; */
-  perspective: inherit;
-  transition: transform 1s;
-  height: var(--slide-containers);
   position: absolute;
+  transition: transform 1s;
+  height: 100%;
+  width: 100%;
   top: 0;
   left: 0;
-  width: 100%;
   backface-visibility: hidden;
   z-index: 1000;
   border-radius: 5px;

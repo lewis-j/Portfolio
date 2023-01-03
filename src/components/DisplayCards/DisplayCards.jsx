@@ -196,6 +196,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           }}
         >
           <FlipCard
+            className={styles.projects}
             front={renderFlipCarousel()}
             back={readMe}
             isBack={isReadMe}
