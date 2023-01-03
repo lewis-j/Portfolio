@@ -65,9 +65,8 @@
   position: relative;
   padding: 1em;
   background-color: var(--darkThemeColor);
-  height: 133%;
-  width: 100%;
-  transform: translate(-8%, -25%);
+  height: 100%;
+  width: 110%;
   border: var(--darkThemeColor);
   box-shadow: inset 0 0 5px var(--lightThemeColor);
   border-radius: var(--borderRadius);

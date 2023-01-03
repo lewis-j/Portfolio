@@ -190,7 +190,7 @@
   position: relative;
   height: 90%;
   width: 100%;
-  max-width: 56rem;
+  max-width: 65rem;
   /* border: 2px solid white; */
   margin: 0px auto;
   transform: scale(0);
@@ -200,7 +200,9 @@
 .section {
   position: absolute;
   /* background-color: aliceblue; */
-  height: 90%;
+  width: 48%;
+  max-width: 30em;
+  min-width: 20em;
   top: 0;
   aspect-ratio: 1/1;
   color: white;
@@ -235,14 +237,27 @@
 }
 
 .skills {
-  background-color: var(--highlightColor);
-  color: black;
+  background-color: #290029;
+  color: var(--darkThemeColor);
 }
 
 .title {
+  text-transform: uppercase;
   letter-spacing: 5px;
 }
 
+.skillsItem {
+  background: url("../../assets/img/graphics/space.svg") no-repeat 0px 5px;
+  list-style: none;
+  padding: 5px 25px;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.skills ul {
+  margin: 0;
+  padding-inline-start: 0;
+}
 @keyframes expand {
   0% {
     transform: scale(0);

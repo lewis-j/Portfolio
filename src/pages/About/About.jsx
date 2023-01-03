@@ -89,7 +89,16 @@ const About = ({ offsetSegments }) => {
   );
 
   const Skills = () => (
-    <div className={styles.skills}>Here are some of my skills</div>
+    <div className={styles.skills}>
+      <h2 className={styles.title}>PROMINENT SKILLS</h2>
+      <ul>
+        {skillsList.map((skill, idx) => (
+          <li className={styles.skillsItem} key={Math.random() * idx}>
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 
   // const Tabs = ({}) => {
