@@ -1,40 +1,13 @@
 import { appendStyles } from "../../util";
-import projects from "../../assets/data/projects";
 import Footer from "../../layout/Footer/Footer";
 import styles from "./Layout.module.css";
-import { useNavigate, useRouter } from "../../lib/router/Router";
+import { useRouter } from "../../lib/router/Router";
 import { useThemeContext } from "../../context/ThemeContext/Theme";
 
-const Layout = ({ children, offsetSegments }) => {
-  const navigate = useNavigate();
-  const { transitionClass, isDark, setIsDark } = useThemeContext();
+const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
+  const { transitionClass, isDark } = useThemeContext();
   const { route } = useRouter();
 
-  const containerHeight = offsetSegments * projects.length + 1;
-
-  const navLinks = [
-    {
-      title: "Home",
-      linkHandler: () => {
-        setIsDark(false);
-        navigate("/");
-        window.scrollTo(0, 0);
-      },
-    },
-    {
-      title: "Projects",
-      linkHandler: () => {
-        navigate("/");
-        window.scrollTo(0, offsetSegments + 50);
-      },
-    },
-    {
-      title: "About",
-      linkHandler: () => {
-        navigate("/about");
-      },
-    },
-  ];
   return (
     <div
       className={styles.container}
@@ -56,10 +29,7 @@ const Layout = ({ children, offsetSegments }) => {
           <span className={styles.threeD}>{"</>"}</span>
         </h1>
         <div className={styles.children}>{children}</div>
-        <Footer
-          navLinks={navLinks}
-          isCyclingText={window.pageYOffset < offsetSegments}
-        />
+        <Footer navLinks={navLinks} isCyclingText={isCyclingText} />
       </div>
     </div>
   );

@@ -73,9 +73,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
       <FlipCarousel
         renderCard={renderMenucard}
         frontClassName={styles.flipCardContentContainer}
-        backClassName={
-          slide < 1 && isIncrementing ? "" : styles.flipCardContentContainer
-        }
+        backClassName={slide < 1 ? "" : styles.flipCardContentContainer}
         index={slide}
       />
     );

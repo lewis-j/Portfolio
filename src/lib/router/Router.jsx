@@ -10,8 +10,6 @@ const Router = ({ children }) => {
     return () => window.removeEventListener("navigate", onLocationChange);
   }, []);
 
-  console.log("route", route);
-
   return (
     <RouterContext.Provider value={{ route }}>
       {children}

@@ -156,6 +156,9 @@
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 .background {
@@ -180,27 +183,28 @@
   background-size: contain;
   border-radius: 50%;
   filter: grayscale(1);
-  animation: expand 1s ease-in-out 0.2s forwards;
+  animation: expand 0.5s ease-in-out 0.2s forwards;
 }
 
 .slidingSections {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 100%;
-  width: 95%;
-  border: 2px solid white;
+  height: 90%;
+  width: 100%;
+  max-width: 56rem;
+  /* border: 2px solid white; */
   margin: 0px auto;
+  transform: scale(0);
+  animation: expand 0.25s ease-in-out 1s forwards;
 }
 
 .section {
   position: absolute;
-  height: 100%;
+  /* background-color: aliceblue; */
+  height: 90%;
+  top: 0;
   aspect-ratio: 1/1;
   color: white;
-  border: 1px solid white;
-  transition: 1s;
+  transition: transform 1s, left 1s;
 }
 
 .aboutImg img {
@@ -208,7 +212,35 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: scaleUp ease-in-out forwards;
+}
+
+.aboutMe,
+.skills {
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--darkThemeColor);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--neon-box-shadow);
+  box-sizing: border-box;
+  padding: 1em;
+}
+
+.aboutMe {
+  background-color: var(--darkThemeColor);
+  color: var(--lightThemeColor);
+}
+
+.aboutContent {
+  padding: 0.5em;
+}
+
+.skills {
+  background-color: var(--highlightColor);
+  color: black;
+}
+
+.title {
+  letter-spacing: 5px;
 }
 
 @keyframes expand {

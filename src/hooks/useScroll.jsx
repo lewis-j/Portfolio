@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Tabs } from "../components";
 
 const useScroll = (length, offsetSegments) => {
   const [isIncrementing, setIsIncrementing] = useState(true);
@@ -7,12 +6,6 @@ const useScroll = (length, offsetSegments) => {
 
   const _handleScroll = () => {
     const offset = window.pageYOffset;
-    // if (offset < offsetSegments) {
-    //   if (slide === -1) return;
-    //   setSlide(-1);
-    //   setIsIncrementing(true);
-    //   return;
-    // }
     [...Array(length).keys()].forEach((_, index) => {
       const lowRange = index * offsetSegments;
       const highRange = lowRange + offsetSegments;
@@ -21,7 +14,7 @@ const useScroll = (length, offsetSegments) => {
       if (isInRange) {
         if (index === slide) return;
 
-        setIsIncrementing(slide < index || index === 0);
+        setIsIncrementing(slide < index);
         setSlide(index);
       }
     });
@@ -38,9 +31,6 @@ const useScroll = (length, offsetSegments) => {
     window.scrollTo(0, slideIndex * offsetSegments + 1);
   };
 
-  const ScrollTabs = (
-    <Tabs length={length} current={slide} handleActive={setScrollPosition} />
-  );
-  return { setScrollPosition, slide, isIncrementing, ScrollTabs };
+  return { setScrollPosition, slide, isIncrementing };
 };
 export default useScroll;

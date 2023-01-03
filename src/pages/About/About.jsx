@@ -10,19 +10,19 @@ import {
   frameworksAndLibraries,
   aboutMe,
 } from "../../assets/data/aboutContent";
+import useScroll from "../../hooks/useScroll";
 
-const About = ({ animationTime = 600 }) => {
+const About = ({ offsetSegments }) => {
   const { setIsDark } = useThemeContext();
   const [isDownLoading, setIsDownLoading] = useState(false);
 
-  const [slide, setSlide] = useState(0);
+  const { setScrollPosition, slide, isIncrementing } = useScroll(
+    4,
+    offsetSegments
+  );
 
   useEffect(() => {
-    // document.body.style.overflow = "hidden";
     setIsDark(true);
-    // return () => {
-    //   document.body.style.overflow = "visible";
-    // };
   }, []);
 
   const handleDownload = async () => {
@@ -42,47 +42,66 @@ const About = ({ animationTime = 600 }) => {
     }
   };
 
-  const renderList = (list) => {
-    return list.map((item) => {
-      return (
-        <div key={item} className={styles.listitem}>
-          {item}
-        </div>
-      );
-    });
-  };
+  const joinedFrameWorksAndLibraries = frameworksAndLibraries.map(
+    (itemSet, i) =>
+      itemSet.map((item, j) => <div key={`${item} ${i}${j}`}>{item}</div>)
+  );
 
-  const renderSlides = (slides) => {
+  const renderSlides = (...slides) => {
     return slides.map((item, idx) => {
       //https://stackoverflow.com/questions/10247255/css-transition-between-left-right-and-top-bottom-positions
-      const style = { left: "0", transform: "translateX(0)" };
+      const style = {
+        left: "0",
+        transform: "translateX(0)",
+        zIndex: 100,
+      };
+      if (slide === idx) style.zIndex = 111;
+      if (slide + 1 === idx) style.zIndex = 110;
+
+      if (!isIncrementing) {
+        if (slide === idx) style.zIndex = 110;
+        if (slide + 1 === idx) style.zIndex = 111;
+      }
+
       if (slide < idx) {
         style.transform = "translateX(-100%)";
         style.left = "100%";
       }
       return (
-        <section
-          className={styles.section}
-          key={idx + item}
-          style={style}
-          onClick={() => setSlide((prev) => prev + 1)}
-        >
+        <section className={`${styles.section}`} key={idx + item} style={style}>
           {item}
         </section>
       );
     });
   };
 
-  const joinedFrameWorksAndLibraries = frameworksAndLibraries.map(
-    (itemSet, i) =>
-      itemSet.map((item, j) => <div key={`${item} ${i}${j}`}>{item}</div>)
+  const AboutImg = () => (
+    <div className={styles.aboutImg}>
+      <img src={aboutPic} alt="lindsey's portrait" />
+    </div>
   );
-  const slides = ["picture", "About", "skills"];
+
+  const AboutMe = () => (
+    <div className={styles.aboutMe}>
+      <h2 className={styles.title}>Who am I</h2>
+      <div className={styles.aboutContent}>{aboutMe}</div>
+    </div>
+  );
+
+  const Skills = () => (
+    <div className={styles.skills}>Here are some of my skills</div>
+  );
+
+  // const Tabs = ({}) => {
+
+  // }
 
   return (
     <div className={styles.container}>
       <div className={styles.background}></div>
-      <div className={styles.slidingSections}>{renderSlides(slides)}</div>
+      <div className={styles.slidingSections}>
+        {renderSlides(<AboutImg />, <AboutMe />, <Skills />)}
+      </div>
     </div>
   );
 };
