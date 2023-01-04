@@ -8,16 +8,13 @@ import useScroll from "../../hooks/useScroll";
 
 const Home = ({ offsetSegments }) => {
   const { setIsDark } = useThemeContext();
-  const {
-    setScrollPosition,
-    slide: _slide,
-    isIncrementing,
-  } = useScroll(projects.length + 1, offsetSegments);
-
-  const slide = _slide - 1;
+  const { setScrollPosition, slide, isIncrementing } = useScroll(
+    projects.length + 1,
+    offsetSegments
+  );
 
   useEffect(() => {
-    setIsDark(slide !== -1);
+    setIsDark(slide !== 0);
   }, [slide]);
 
   return (
@@ -28,7 +25,7 @@ const Home = ({ offsetSegments }) => {
         isIncrementing={isIncrementing}
       />
       <div className={styles.tabs}>
-        {slide >= 0 && (
+        {slide >= 1 && (
           <Tabs
             length={projects.length}
             current={slide}

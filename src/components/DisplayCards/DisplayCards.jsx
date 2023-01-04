@@ -34,10 +34,11 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
       }}
     />
   );
-  const renderMenucard = (idx) => {
-    if (idx < 0) {
+  const renderMenucard = (index) => {
+    if (index < 1) {
       return <ProfileComponent />;
     }
+    const idx = index - 1;
     return (
       <div className={styles.menuContent}>
         <h1 className={styles.menuTitle}>{slides[idx].title}</h1>
@@ -69,11 +70,19 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
   };
 
   const renderFlipCard = () => {
+    const frontClassName = () => {
+      if (slide < 2) {
+        if (!isIncrementing && slide == 1)
+          return styles.flipCardContentContainer;
+        return "";
+      }
+      return styles.flipCardContentContainer;
+    };
     return (
       <FlipCarousel
         renderCard={renderMenucard}
-        frontClassName={styles.flipCardContentContainer}
-        backClassName={slide < 1 ? "" : styles.flipCardContentContainer}
+        frontClassName={frontClassName()}
+        backClassName={styles.flipCardContentContainer}
         index={slide}
       />
     );
@@ -139,10 +148,10 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
       const shadowClassName = index === 0 ? styles.boxShadow : "";
       const classNames = appendStyles(styles.flipCardImg, shadowClassName);
       const style = {};
-      if (slide < index) {
+      const projectSlide = slide - 1;
+      if (projectSlide < index) {
         style.transform = "translateX(100vw)";
-      } else if (slide > index && isHidden) {
-        console.log("hide");
+      } else if (projectSlide > index && isHidden) {
         style.visibility = "hidden";
       }
 
@@ -158,7 +167,6 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
       };
       const renderDescription = (overView) => {
         if (!overView) return null;
-        console.log("overview", overView);
         return overView.map(({ title, text }, idx) => (
           <div key={idx + title}>
             <h3 className={styles.overViewTitle}>{title}</h3>
@@ -214,7 +222,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
     <div className={styles.container}>
       <div
         className={styles.flipCard}
-        style={slide === -1 ? offsetProfilePic : {}}
+        style={slide === 0 ? offsetProfilePic : {}}
       >
         {renderFlipCard()}
       </div>

@@ -6,7 +6,7 @@ const Tabs = ({ length, current, handleActive }) => {
       <div
         key={`tab:${idx * Math.random()}`}
         onClick={() => handleActive(idx + 1)}
-        className={current === idx ? styles.tabActive : styles.tab}
+        className={current === idx + 1 ? styles.tabActive : styles.tab}
       >
         {idx + 1}
       </div>
