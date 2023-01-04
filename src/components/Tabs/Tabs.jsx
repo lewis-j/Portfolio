@@ -1,14 +1,16 @@
 import styles from "./Tabs.module.css";
 
-const Tabs = ({ length, current, handleActive }) => {
+const Tabs = ({ length, current, handleActive, list }) => {
+  const tabsList = list ? list : [...Array(length).keys()];
+
   const renderTabs = () => {
-    return [...Array(length).keys()].map((idx) => (
+    return tabsList.map((item, idx) => (
       <div
         key={`tab:${idx * Math.random()}`}
-        onClick={() => handleActive(idx + 1)}
-        className={current === idx + 1 ? styles.tabActive : styles.tab}
+        onClick={() => handleActive(idx)}
+        className={current === idx ? styles.tabActive : styles.tab}
       >
-        {idx + 1}
+        {list ? <div className={styles.list}>{item}</div> : idx + 1}
       </div>
     ));
   };

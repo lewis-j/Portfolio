@@ -13,6 +13,8 @@ const Home = ({ offsetSegments }) => {
     offsetSegments
   );
 
+  const setActiveScrollWithOffset = (idx) => setScrollPosition(idx + 1);
+
   useEffect(() => {
     setIsDark(slide !== 0);
   }, [slide]);
@@ -28,8 +30,8 @@ const Home = ({ offsetSegments }) => {
         {slide >= 1 && (
           <Tabs
             length={projects.length}
-            current={slide}
-            handleActive={setScrollPosition}
+            current={slide - 1}
+            handleActive={setActiveScrollWithOffset}
           />
         )}
       </div>

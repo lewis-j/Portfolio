@@ -10,6 +10,14 @@
   border: 0.1rem solid var(--unselectedDarkThemeColor);
   border-radius: var(--borderRadius);
   padding: 0.25em 0.5em;
+  cursor: pointer;
+}
+
+.list {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  padding: 0 0.5em;
+  padding-top: 2px;
 }
 
 .tab:hover,
@@ -18,7 +26,7 @@
   border: var(--neon-border);
   box-shadow: var(--neon-box-shadow);
   border-radius: var(--borderRadius);
-  padding: var(--padding);
+  padding: 0.25em 0.5em;
 }
 
 @keyframes fadeIn {

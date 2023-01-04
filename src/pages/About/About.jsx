@@ -17,7 +17,7 @@ import {
   aboutMe,
 } from "../../assets/data/aboutContent";
 import useScroll from "../../hooks/useScroll";
-import { DescriptionList } from "../../components";
+import { DescriptionList, Tabs } from "../../components";
 
 const About = ({ offsetSegments }) => {
   const { setIsDark } = useThemeContext();
@@ -129,10 +129,6 @@ const About = ({ offsetSegments }) => {
     </div>
   );
 
-  // const Tabs = ({}) => {
-
-  // }
-
   return (
     <div className={styles.container}>
       <div className={styles.background}></div>
@@ -156,6 +152,11 @@ const About = ({ offsetSegments }) => {
           <Contact />
         )}
       </div>
+      <Tabs
+        list={["About me", "Skills", "Technologies", "Contact"]}
+        current={slide}
+        handleActive={setScrollPosition}
+      />
     </div>
   );
 };
