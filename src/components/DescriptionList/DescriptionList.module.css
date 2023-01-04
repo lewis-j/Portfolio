@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  font-size: 1.2em;
+}
+
+.title {
+  margin: 0;
+}
+
+.data {
+  color: var(--darkThemeColor);
+}

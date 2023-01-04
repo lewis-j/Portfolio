@@ -11,10 +11,11 @@ body::-webkit-scrollbar {
   color: black;
 } */
 body::-webkit-scrollbar-thumb {
-  background-color: black;
+  background-color: var(--secondaryHighlightColor);
   color: white;
   border-radius: 15px;
-  box-shadow: inset 1px 1px 4px 1px rgb(255, 255, 255);
+  border: 1px solid var(--highlightColor);
+  box-shadow: inset 1px 1px 4px 1px var(--highlightColor);
 }
 
 body::-webkit-scrollbar-track {

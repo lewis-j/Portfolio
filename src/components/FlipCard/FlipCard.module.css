@@ -24,21 +24,3 @@
   z-index: 1000;
   border-radius: 5px;
 }
-.zeroX {
-  transform: rotateX(0deg);
-}
-.frontRotateX {
-  transform: rotateX(-180deg);
-}
-.backRotateX {
-  transform: rotateX(180deg);
-}
-.zeroY {
-  transform: rotateY(0deg);
-}
-.frontRotateY {
-  transform: rotateY(-180deg);
-}
-.backRotateY {
-  transform: rotateY(180deg);
-}
