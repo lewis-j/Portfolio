@@ -5,12 +5,33 @@
   animation: fadeIn 2s ease-in forwards;
 }
 
+.item {
+  position: relative;
+}
+
 .tab {
+  position: relative;
   color: var(--unselectedDarkThemeColor);
   border: 0.1rem solid var(--unselectedDarkThemeColor);
   border-radius: var(--borderRadius);
   padding: 0.25em 0.5em;
   cursor: pointer;
+}
+
+.tab:before {
+  content: "";
+  position: absolute;
+  width: 103%;
+  height: 103%;
+  top: -1.5%;
+  left: -1.5%;
+}
+
+.tab:hover:before {
+  border: 0.2rem solid #fff;
+  box-shadow: var(--neon-box-shadow);
+  border-radius: var(--borderRadius);
+  box-sizing: border-box;
 }
 
 .list {
@@ -20,13 +41,17 @@
   padding-top: 2px;
 }
 
-.tab:hover,
+.tab:hover {
+  color: var(--darkThemeColor);
+}
+
 .tabActive {
   color: var(--darkThemeColor);
   border: var(--neon-border);
   box-shadow: var(--neon-box-shadow);
   border-radius: var(--borderRadius);
   padding: 0.25em 0.5em;
+  cursor: pointer;
 }
 
 @keyframes fadeIn {
