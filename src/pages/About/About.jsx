@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { appendStyles } from "../../util";
 import styles from "./About.module.css";
 import aboutPic from "../../assets/img/about_pic.png";
@@ -8,7 +8,6 @@ import {
   faDownload,
   faEnvelope,
   faMapLocationDot,
-  faSpinner,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -21,7 +20,6 @@ import { DescriptionList, Tabs } from "../../components";
 
 const About = ({ offsetSegments }) => {
   const { setIsDark } = useThemeContext();
-  const [isDownLoading, setIsDownLoading] = useState(false);
 
   const { setScrollPosition, slide, isIncrementing } = useScroll(
     4,
@@ -34,7 +32,6 @@ const About = ({ offsetSegments }) => {
 
   const handleDownload = async () => {
     try {
-      setIsDownLoading(true);
       const response = await fetch("Lindsey_Jackson_Resume.pdf");
       const blob = await response.blob();
       const fileUrl = window.URL.createObjectURL(blob);
@@ -44,15 +41,8 @@ const About = ({ offsetSegments }) => {
       alink.click();
     } catch (error) {
       console.log(error);
-    } finally {
-      setIsDownLoading(false);
     }
   };
-
-  const joinedFrameWorksAndLibraries = frameworksAndLibraries.map(
-    (itemSet, i) =>
-      itemSet.map((item, j) => <div key={`${item} ${i}${j}`}>{item}</div>)
-  );
 
   const renderSlides = (...slides) => {
     console.log("slide", slide);
@@ -151,6 +141,10 @@ const About = ({ offsetSegments }) => {
           />,
           <Contact />
         )}
+      </div>
+      <div className={styles.resume} onClick={() => handleDownload()}>
+        <FontAwesomeIcon icon={faDownload} />
+        <h4>Resume</h4>
       </div>
       <Tabs
         list={["About me", "Skills", "Technologies", "Contact"]}
