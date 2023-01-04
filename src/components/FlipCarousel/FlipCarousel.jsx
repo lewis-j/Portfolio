@@ -45,25 +45,13 @@ const FlipCarousel = ({
   const renderCardWithListeners = attachCardListeners(handleFlips);
 
   const getCards = (idx) => {
-    console.log("idx in getCards", idx, "isIncrementing", isIncrementing);
     if (isIncrementing) {
       if (isEven(idx)) {
-        console.log(
-          `%cisEven:`,
-          "color:red; font-size:14px; font-weight:bold",
-          isEven(idx)
-        );
-
         return {
           front: renderCardWithListeners(idx),
           back: renderCardWithListeners(idx - 1),
         };
       } else {
-        console.log(
-          `%cisOdd:`,
-          "color:yellow; font-size:14px; font-weight:bold",
-          isEven(idx)
-        );
         return {
           front: renderCardWithListeners(idx - 1),
           back: renderCardWithListeners(idx),
@@ -84,6 +72,9 @@ const FlipCarousel = ({
     }
   };
   const { front, back } = getCards(slide);
+
+  const flipIndex = index ? index : slide;
+  if (index) console.log("index", index);
   return (
     <FlipCard
       front={front}
@@ -92,6 +83,7 @@ const FlipCarousel = ({
       back={back}
       backClassName={backClassName}
       isBack={!isEven(slide)}
+      index={flipIndex}
     />
   );
 };
