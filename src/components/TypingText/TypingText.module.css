@@ -3,10 +3,19 @@
   height: 1rem;
 }
 
+.text {
+  color: black;
+  font-size: 1.2em;
+  font-family: var(--title-font);
+}
+
 .cursor {
   height: 100%;
   background-color: black;
   width: 3px;
+}
+
+.blink {
   animation: blink 1s infinite;
 }
 

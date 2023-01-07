@@ -32,4 +32,7 @@
 
   /*misc*/
   --pointer-cursor: pointer;
+
+  /*fonts*/
+  --title-font: "Questrial";
 }

@@ -37,7 +37,6 @@
   height: 90%;
   width: 100%;
   max-width: 65rem;
-  /* border: 2px solid white; */
   margin: 0px auto;
   transform: scale(0);
   animation: expand 0.25s ease-in-out 1s forwards;

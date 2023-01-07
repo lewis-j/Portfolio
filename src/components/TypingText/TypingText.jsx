@@ -2,38 +2,72 @@ import { useState, useEffect } from "react";
 import styles from "./TypingText.module.css";
 
 const TypingText = ({ textList }) => {
-  const text = "test";
-  const timeout = 250;
+  const typeSpeed = 150;
+  const eraseSpeed = 100;
+  const newTextdelay = 1000;
+  const eraseDelay = 2000;
 
   const [currentText, setText] = useState("");
-  const erase = () => {
-    [...Array(text.length).keys()].forEach((idx) => {
-      console.log("char", text.charAt(idx));
-      setTimeout(() => {
-        setText(text.slice(0, text.length - idx - 1));
-      }, timeout * idx);
-    });
+  const [isTyping, setIsTyping] = useState(true);
+  const [timeoutId, setTimoutId] = useState();
+
+  const erase = (index, wordIndex) => {
+    setIsTyping(true);
+    const word = textList[wordIndex];
+    if (index === 0) {
+      setIsTyping(false);
+      const nextWordIndex =
+        textList.length - 1 === wordIndex ? 0 : wordIndex + 1;
+      const timeoutId = setTimeout(() => {
+        type(0, nextWordIndex);
+      }, newTextdelay);
+      setTimoutId(timeoutId);
+    } else {
+      const timeoutId = setTimeout(() => {
+        setText(word.slice(0, index - 1));
+        erase(index - 1, wordIndex);
+      }, eraseSpeed);
+      setTimoutId(timeoutId);
+    }
   };
 
-  const type = () => {
-    [...Array(text.length).keys()].forEach((idx) => {
-      console.log("char", text.charAt(idx));
-      setTimeout(() => {
-        setText((prev) => prev + text.charAt(idx));
-        console.log(idx, text.length - 1, text.charAt(idx));
-        if (idx === text.length - 1) setTimeout(() => erase(), 1000);
-      }, timeout * idx);
-    });
+  const type = (index = 0, wordIndex = 0) => {
+    setIsTyping(true);
+    const word = textList[wordIndex];
+    if (index === word.length) {
+      setIsTyping(false);
+      const timeoutId = setTimeout(() => {
+        erase(index, wordIndex);
+      }, eraseDelay);
+      setTimoutId(timeoutId);
+    } else {
+      setText((prev) => prev + word.charAt(index));
+      const timeoutId = setTimeout(() => {
+        type(index + 1, wordIndex);
+      }, typeSpeed);
+      setTimoutId(timeoutId);
+    }
   };
+
+  useEffect(() => {
+    console.log("timeoutId", timeoutId);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [timeoutId]);
 
   useEffect(() => {
     type();
     return () => {};
   }, []);
+
+  const cursorClassName = isTyping
+    ? styles.cursor
+    : `${styles.cursor} ${styles.blink}`;
   return (
     <div className={styles.container}>
       <span className={styles.text}>{currentText}</span>
-      <span className={styles.cursor} />
+      <span className={cursorClassName} />
     </div>
   );
 };
