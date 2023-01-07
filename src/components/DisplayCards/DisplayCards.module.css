@@ -5,7 +5,7 @@
   flex-flow: row wrap;
   width: 100%;
   height: auto;
-  gap: 4rem;
+  gap: var(--slide-containers-gap);
 }
 
 .menuContent {

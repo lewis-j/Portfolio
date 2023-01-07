@@ -4,6 +4,7 @@
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -34,9 +35,8 @@
 
 .slidingSections {
   position: relative;
-  height: 90%;
-  width: 100%;
-  max-width: 65rem;
+  height: var(--slide-containers);
+  width: calc((var(--slide-containers) * 2) + var(--slide-containers-gap));
   margin: 0px auto;
   transform: scale(0);
   animation: expand 0.25s ease-in-out 1s forwards;
@@ -44,11 +44,9 @@
 
 .section {
   position: absolute;
-  width: 48%;
-  max-width: 30em;
-  min-width: 20em;
+  width: var(--slide-containers);
+  height: var(--slide-containers);
   top: 0;
-  aspect-ratio: 1/1;
   color: white;
   transition: transform 1s, left 1s;
 }
@@ -69,10 +67,10 @@
   box-shadow: var(--neon-box-shadow);
   box-sizing: border-box;
   padding: 1em;
+  overflow: auto;
 }
 
 .aboutMe {
-  overflow: auto;
   white-space: pre-wrap;
   background-color: var(--darkThemeColor);
   color: var(--lightThemeColor);
@@ -140,11 +138,9 @@
 .resume {
   position: relative;
   display: flex;
-  top: -15px;
   letter-spacing: 3px;
   color: var(--secondaryHighlightColor);
   background-color: white;
-  margin-bottom: 1.5rem;
   border: 3px solid var(--lightThemeColor);
   box-shadow: var(--highlight-neon-box-shadow);
   border-radius: 15px;

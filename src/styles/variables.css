@@ -29,6 +29,7 @@
 
   /*sizing*/
   --slide-containers: 45vh;
+  --slide-containers-gap: 4em;
 
   /*misc*/
   --pointer-cursor: pointer;
