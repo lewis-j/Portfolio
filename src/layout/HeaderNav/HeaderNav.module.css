@@ -1,0 +1,42 @@
+.container {
+  display: var(--navDisplay);
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.5em;
+  margin-left: 1em;
+}
+
+.dark .line {
+  background-color: white;
+  z-index: 1000;
+}
+
+.hamburgerMenu {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 2em;
+  height: 2em;
+  padding: 0.5em;
+}
+
+.open div:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+.open div:nth-child(2) {
+  transform: scale(0);
+}
+.open div:nth-child(3) {
+  transform: rotate(135deg) translate(-7px, 7px);
+}
+
+.line {
+  height: 2px;
+  width: 100%;
+  background-color: var(--lightThemeColor);
+  transition: 0.25s transform;
+}

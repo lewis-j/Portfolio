@@ -3,6 +3,9 @@ import Footer from "../../layout/Footer/Footer";
 import styles from "./Layout.module.css";
 import { useRouter } from "../../lib/router/Router";
 import { useThemeContext } from "../../context/ThemeContext/Theme";
+import HeaderNav from "../HeaderNav/HeaderNav";
+import { TitleBrand, TypingText } from "../../components";
+import { cyclingText } from "../../assets";
 
 const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
   const { transitionClass, isDark } = useThemeContext();
@@ -14,6 +17,7 @@ const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
       style={{ height: `calc(100vh + ${containerHeight}px)` }}
     >
       <div className={styles.fixedPage}>
+        <HeaderNav />
         {route === "/" && (
           <div
             className={styles.slidingBackground}
@@ -24,12 +28,10 @@ const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
             }
           ></div>
         )}
-        <h1 className={appendStyles(styles.logo, transitionClass)}>
-          <span className={styles.threeD}>{"<>"}</span>Lindsey Jackson
-          <span className={styles.threeD}>{"</>"}</span>
-        </h1>
+        <TitleBrand className={styles.logo} title="Lindsey Jackson" />
         <div className={styles.children}>{children}</div>
         <Footer navLinks={navLinks} isCyclingText={isCyclingText} />
+        <TypingText textList={cyclingText} />
       </div>
     </div>
   );

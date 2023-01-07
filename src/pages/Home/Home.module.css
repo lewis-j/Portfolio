@@ -11,3 +11,10 @@
 .tabs {
   min-height: 2.5rem;
 }
+
+@media screen and (max-width: 620px) {
+  .slidingContainer {
+    justify-content: flex-start;
+    margin-top: 0.5em;
+  }
+}

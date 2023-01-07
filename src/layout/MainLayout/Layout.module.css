@@ -35,3 +35,13 @@
 .threeD {
   font-family: "Ewert";
 }
+
+@media screen and (max-width: 620px) {
+  .logo {
+    display: none;
+  }
+
+  .children {
+    height: 100%;
+  }
+}

@@ -7,3 +7,4 @@ export { default as FlipCarousel } from "./FlipCarousel/FlipCarousel";
 export { default as CloseBtn } from "./CloseBtn/CloseBtn";
 export { default as TypingText } from "./TypingText/TypingText";
 export { default as DescriptionList } from "./DescriptionList/DescriptionList";
+export { default as TitleBrand } from "./TitleBrand/TitleBrand";

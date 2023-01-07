@@ -8,6 +8,12 @@
   gap: var(--slide-containers-gap);
 }
 
+@media only screen and (max-width: 620px) {
+  .container {
+    flex-flow: column nowrap;
+  }
+}
+
 .menuContent {
   display: flex;
   flex-direction: column;
@@ -167,18 +173,12 @@
 .arrowLight {
   color: var(--darkThemeColor);
 }
-
-.projects,
-.projectContainer,
-.flipCard {
+.flipCard,
+.projectContainer {
   width: var(--slide-containers);
   height: var(--slide-containers);
 }
 
-/* .projectContainer:hover {
-  transform: scale(1.2);
-  transition: 0.25s;
-} */
 .projectContainer img {
   filter: grayscale(0.8);
 }
