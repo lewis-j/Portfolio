@@ -17,7 +17,7 @@ const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
       style={{ height: `calc(100vh + ${containerHeight}px)` }}
     >
       <div className={styles.fixedPage}>
-        <HeaderNav />
+        <HeaderNav navLinks={navLinks} />
         {route === "/" && (
           <div
             className={styles.slidingBackground}

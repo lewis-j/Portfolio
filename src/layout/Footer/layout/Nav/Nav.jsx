@@ -3,7 +3,7 @@ import styles from "./Nav.module.css";
 import { appendStyles } from "../../../../util";
 import { useThemeContext } from "../../../../context/ThemeContext/Theme";
 
-export const Nav = ({ navLinks }) => {
+export const Nav = ({ navLinks, className }) => {
   const { transitionClass } = useThemeContext();
   const renderLinks = () => {
     return navLinks.map(({ title, linkHandler }, idx) => (
@@ -14,7 +14,7 @@ export const Nav = ({ navLinks }) => {
   };
 
   return (
-    <div className={appendStyles(styles.links, transitionClass)}>
+    <div className={appendStyles(styles.links, className, transitionClass)}>
       {renderLinks()}
     </div>
   );

@@ -50,7 +50,6 @@ const TypingText = ({ textList }) => {
   };
 
   useEffect(() => {
-    console.log("timeoutId", timeoutId);
     return () => {
       clearTimeout(timeoutId);
     };

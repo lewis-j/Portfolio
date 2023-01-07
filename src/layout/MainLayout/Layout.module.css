@@ -1,7 +1,7 @@
 .fixedPage {
   position: fixed;
   display: flex;
-  background-image: linear-gradient(271deg, #00000029, transparent);
+  background-image: var(--lightThemeBackground);
   justify-content: space-around;
   flex-direction: column;
   align-items: center;

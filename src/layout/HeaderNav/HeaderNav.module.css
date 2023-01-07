@@ -1,13 +1,32 @@
+:root {
+  --header-height: 50px;
+}
+
 .container {
-  display: var(--navDisplay);
+  position: relative;
   width: 100%;
+}
+.header {
+  position: relative;
+  display: var(--navDisplay);
+  height: var(--header-height);
+  width: 100%;
+  z-index: 2;
 }
 
 .logo {
   position: relative;
   text-align: center;
   font-size: 1.5em;
-  margin-left: 1em;
+  margin: 0;
+  padding: 0.3em;
+}
+
+.dark {
+  background-color: var(--lightThemeColor);
+}
+.light {
+  background-color: var(--darkThemeColor);
 }
 
 .dark .line {
@@ -43,4 +62,28 @@
   width: 100%;
   background-color: var(--lightThemeColor);
   transition: 0.25s transform;
+}
+
+.menu {
+  position: absolute;
+  top: var(--header-height);
+  left: 0px;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+}
+
+.nav {
+  text-align: center;
+}
+.nav h3 {
+  margin: 3em;
+  font-size: 1.5em;
+}
+.social {
+  margin-bottom: 2em;
 }

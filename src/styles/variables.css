@@ -6,6 +6,7 @@
   --highlightColor: purple;
   --secondaryHighlightColor: #290029;
   --neon-color-shadow: rgb(32, 32, 32);
+  --lightThemeBackground: linear-gradient(271deg, #00000029, transparent);
 
   /*Box Model */
   --neon-border: 0.2rem solid #fff;

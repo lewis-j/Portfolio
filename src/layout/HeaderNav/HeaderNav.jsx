@@ -3,8 +3,10 @@ import styles from "./HeaderNav.module.css";
 import { useState } from "react";
 import { TitleBrand } from "../../components";
 import { useThemeContext } from "../../context/ThemeContext/Theme";
+import { Nav } from "../Footer/layout/Nav/Nav";
+import { SocialLinks } from "../Footer/layout/SocialLinks/SocialLinks";
 
-const HeaderNav = () => {
+const HeaderNav = ({ navLinks }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { isDark } = useThemeContext();
 
@@ -14,14 +16,32 @@ const HeaderNav = () => {
   const themeStyle = isDark
     ? appendStyles(styles.dark, menuBtnStyle)
     : menuBtnStyle;
+  const menuTheme = isDark ? appendStyles(styles.dark) : styles.light;
   return (
     <div className={styles.container}>
-      <TitleBrand title="Lindsey Jackson" className={styles.logo} />
-      <div className={themeStyle} onClick={() => setIsOpen(!isOpen)}>
-        <div className={styles.line} />
-        <div className={styles.line} />
-        <div className={styles.line} />
+      <div className={styles.header}>
+        <TitleBrand title="Lindsey Jackson" className={styles.logo} />
+        <div className={themeStyle} onClick={() => setIsOpen(!isOpen)}>
+          <div className={styles.line} />
+          <div className={styles.line} />
+          <div className={styles.line} />
+        </div>
       </div>
+      {isOpen && (
+        <div
+          className={appendStyles(menuTheme, styles.menu)}
+          onClick={(e) => {
+            if (e.target.tagName === "H3") {
+              setIsOpen(false);
+            }
+          }}
+        >
+          <Nav navLinks={navLinks} className={styles.nav} />
+          <div className={styles.social}>
+            <SocialLinks />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

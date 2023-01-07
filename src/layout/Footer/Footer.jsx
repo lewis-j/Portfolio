@@ -8,7 +8,7 @@ import { Nav } from "./layout/Nav/Nav";
 const Footer = ({ navLinks, isCyclingText }) => {
   return (
     <div className={styles.footer}>
-      <Nav navLinks={navLinks} />
+      <Nav navLinks={navLinks} className={styles.nav} />
       <SocialLinks />
       {/* <CyclingText
         textList={cyclingText}
