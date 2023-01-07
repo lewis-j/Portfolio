@@ -49,7 +49,7 @@
   :root {
     --slide-containers: 35vh;
     --slide-containers-gap: 2em;
-    --navDisplay: flex;
+    --navDisplay: block;
     --footerDisplay: none;
   }
 }

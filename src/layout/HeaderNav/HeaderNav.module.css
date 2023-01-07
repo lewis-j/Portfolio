@@ -1,10 +1,11 @@
 .container {
   display: var(--navDisplay);
-  justify-content: space-between;
   width: 100%;
 }
 
 .logo {
+  position: relative;
+  text-align: center;
   font-size: 1.5em;
   margin-left: 1em;
 }
@@ -15,6 +16,9 @@
 }
 
 .hamburgerMenu {
+  position: absolute;
+  top: 0px;
+  right: 0px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;

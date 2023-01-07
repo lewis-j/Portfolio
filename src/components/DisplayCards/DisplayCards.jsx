@@ -219,11 +219,16 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
     transform: "translateX(25vh)",
   };
 
+  const flipCardClass =
+    slide === 0
+      ? appendStyles(styles.profileOffset, styles.flipCard)
+      : styles.flipCard;
+
   return (
     <div className={styles.container}>
       <div
-        className={styles.flipCard}
-        style={slide === 0 ? offsetProfilePic : {}}
+        className={flipCardClass}
+        // style={slide === 0 ? offsetProfilePic : {}}
       >
         {renderFlipCard()}
       </div>

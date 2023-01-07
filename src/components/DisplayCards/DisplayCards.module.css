@@ -8,12 +8,6 @@
   gap: var(--slide-containers-gap);
 }
 
-@media only screen and (max-width: 620px) {
-  .container {
-    flex-flow: column nowrap;
-  }
-}
-
 .menuContent {
   display: flex;
   flex-direction: column;
@@ -134,6 +128,10 @@
   border-radius: 50%;
 }
 
+.profileOffset {
+  transform: translateX(25vh);
+}
+
 .slideImgContainer {
   height: 100%;
   width: 100%;
@@ -193,4 +191,14 @@
 
 .projectContainer {
   transition: 2s;
+}
+
+@media only screen and (max-width: 620px) {
+  .container {
+    flex-flow: column nowrap;
+  }
+
+  .profileOffset {
+    transform: translateX(0);
+  }
 }
