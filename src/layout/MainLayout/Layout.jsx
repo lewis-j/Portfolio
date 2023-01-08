@@ -32,7 +32,7 @@ const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
         <div className={styles.children}>{children}</div>
         <Footer navLinks={navLinks} isCyclingText={isCyclingText} />
         <div className={styles.typingText}>
-          <TypingText textList={cyclingText} />
+          <TypingText textList={cyclingText} isCyclingText={isCyclingText} />
         </div>
       </div>
     </div>

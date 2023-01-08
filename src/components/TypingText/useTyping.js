@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 
-const useTyping = (textList, typeSetting, eraseSetting, isEnding = false) => {
+const useTyping = (textList, typeSetting, eraseSetting, isCycling) => {
   const [currentText, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [timeoutId, setTimoutId] = useState();
+  const [currentWordIndex, setWordIndex] = useState(0);
 
   const { speed: typeSpeed, delay: typeDelay } = typeSetting;
   const { speed: eraseSpeed, delay: eraseDelay } = eraseSetting;
@@ -15,6 +16,7 @@ const useTyping = (textList, typeSetting, eraseSetting, isEnding = false) => {
       setIsTyping(false);
       const nextWordIndex =
         textList.length - 1 === wordIndex ? 0 : wordIndex + 1;
+      setWordIndex(nextWordIndex);
       const timeoutId = setTimeout(() => {
         type(0, nextWordIndex);
       }, typeDelay);
@@ -30,9 +32,12 @@ const useTyping = (textList, typeSetting, eraseSetting, isEnding = false) => {
 
   const type = (index = 0, wordIndex = 0) => {
     setIsTyping(true);
-    const word = textList[wordIndex];
+
+    const word = isCycling ? textList[wordIndex] : textList[0];
+    console.log("word", word, isCycling);
     if (index === word.length) {
       setIsTyping(false);
+      if (!isCycling) return;
       const timeoutId = setTimeout(() => {
         erase(index, wordIndex);
       }, eraseDelay);
@@ -51,6 +56,15 @@ const useTyping = (textList, typeSetting, eraseSetting, isEnding = false) => {
       clearTimeout(timeoutId);
     };
   }, [timeoutId]);
+
+  useEffect(() => {
+    clearTimeout(timeoutId);
+    erase(currentText.length, currentWordIndex);
+    console.log("isCycling", isCycling);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [isCycling]);
 
   useEffect(() => {
     type();
