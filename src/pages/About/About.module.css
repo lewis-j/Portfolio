@@ -156,8 +156,28 @@
 }
 
 @media screen and (max-width: 620px) {
+  .container {
+    justify-content: space-around;
+  }
   .background::before {
     width: 200vw;
     height: 250vw;
+  }
+
+  .item {
+    background: url("../../assets/img/graphics/space_sm.svg") no-repeat 0px 5px;
+    padding: 0px 20px;
+  }
+  .boxSection li {
+    font-size: 1em;
+    margin-top: 0;
+  }
+
+  .boxSection h2 {
+    font-size: 1.2em;
+  }
+
+  .title {
+    letter-spacing: 1px;
   }
 }
