@@ -26,3 +26,17 @@ export const convertMarkDownToJsxLinks = (text) => {
   buildString.push(remaining);
   return buildString;
 };
+
+export const downloadFile = async (fileName) => {
+  try {
+    const response = await fetch(fileName);
+    const blob = await response.blob();
+    const fileUrl = window.URL.createObjectURL(blob);
+    let alink = document.createElement("a");
+    alink.href = fileUrl;
+    alink.download = fileName;
+    alink.click();
+  } catch (error) {
+    console.log(error);
+  }
+};

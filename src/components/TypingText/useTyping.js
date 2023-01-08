@@ -58,9 +58,11 @@ const useTyping = (textList, typeSetting, eraseSetting, isCycling) => {
   }, [timeoutId]);
 
   useEffect(() => {
-    clearTimeout(timeoutId);
-    erase(currentText.length, currentWordIndex);
-    console.log("isCycling", isCycling);
+    if (!isCycling) {
+      clearTimeout(timeoutId);
+      erase(currentText.length, currentWordIndex);
+      console.log("isCycling", isCycling);
+    }
     return () => {
       clearTimeout(timeoutId);
     };

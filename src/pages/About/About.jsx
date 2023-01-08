@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { appendStyles } from "../../util";
+import { appendStyles, downloadFile } from "../../util";
 import styles from "./About.module.css";
 import aboutPic from "../../assets/img/about_pic.png";
 import { useThemeContext } from "../../context/ThemeContext/Theme";
@@ -30,19 +30,7 @@ const About = ({ offsetSegments }) => {
     setIsDark(true);
   }, []);
 
-  const handleDownload = async () => {
-    try {
-      const response = await fetch("Lindsey_Jackson_Resume.pdf");
-      const blob = await response.blob();
-      const fileUrl = window.URL.createObjectURL(blob);
-      let alink = document.createElement("a");
-      alink.href = fileUrl;
-      alink.download = "Lindsey_Jackson_Resume.pdf";
-      alink.click();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const handleDownload = () => downloadFile("Lindsey_Jackson_Resume.pdf");
 
   const renderSlides = (...slides) => {
     console.log("slide", slide);
@@ -147,7 +135,7 @@ const About = ({ offsetSegments }) => {
         <h4>Resume</h4>
       </div>
       <Tabs
-        list={["About me", "Skills", "Technologies", "Contact"]}
+        list={["About", "Skills", "Tech", "Contact"]}
         current={slide}
         handleActive={setScrollPosition}
       />
