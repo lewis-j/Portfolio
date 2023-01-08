@@ -8,8 +8,9 @@ export const skillsList = [
 
 export const frameworksAndLibraries = [
   ["Javascript", "TypeScript", "React", "Redux", "ReactNative"],
-  ["NodeJS", "ExpressJS", "NestJS"],
-  [" MongoDB", "SQL", "JSON", "GraphQL"],
+  ["NodeJS", "ExpressJS", "NestJS", "NextJS"],
+  [" MongoDB", "Mongoose", "MySQL", "GraphQL", "PHP"],
+  ["HTML5", "JQuery", "BootStrap"],
   ["Passport.JS", "Bcrypt", "OAuth 2", "JWT", "Firebase"],
 ];
 

@@ -22,9 +22,9 @@ const HeaderNav = ({ navLinks }) => {
     ? appendStyles(styles.hamburgerMenu, styles.open)
     : styles.hamburgerMenu;
   const themeStyle = isDark
-    ? appendStyles(styles.dark, menuBtnStyle)
+    ? appendStyles(styles.darkLine, menuBtnStyle)
     : menuBtnStyle;
-  const menuTheme = isDark ? appendStyles(styles.dark) : styles.light;
+  const menuTheme = isDark ? styles.dark : styles.light;
   return (
     <div className={styles.container}>
       <div className={styles.header}>

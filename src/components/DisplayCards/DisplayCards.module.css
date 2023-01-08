@@ -201,4 +201,11 @@
   .profileOffset {
     transform: translate(0px, 90px);
   }
+
+  .menuContent {
+    padding: 1em;
+  }
+  .menuContent li {
+    font-size: 0.75em;
+  }
 }

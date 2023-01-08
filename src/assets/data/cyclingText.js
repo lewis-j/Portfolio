@@ -1,13 +1,13 @@
 const cyclingText = [
   "Full-Stack Developer",
-  "Creative",
   "Self-Sufficient",
-  "Self-taught",
+  "Self-Taught",
   "Clean Code",
   "UI/UX designer",
   "Problem Solver",
+  "Creative",
   "5 years experience",
-  "collaborative",
+  "Collaborative",
 ];
 
 export default cyclingText;
