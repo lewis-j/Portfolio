@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./ReadMe.module.css";
 import CloseBtn from "../CloseBtn/CloseBtn";
 import { convertMarkDownToJsxLinks } from "../../util";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExpand } from "@fortawesome/free-solid-svg-icons";
 
 const ReadMe = ({ isOpen, handleClose, item }) => {
   const renderBadges = (badgeList) =>
@@ -27,14 +29,21 @@ const ReadMe = ({ isOpen, handleClose, item }) => {
   };
 
   return (
-    <div className={styles.readMe}>
-      <div className={styles.closeBtn} onClick={() => handleClose()}>
-        <CloseBtn isOpen={isOpen} />
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h3 className={styles.title}>Project Overview</h3>
+        <div className={styles.expand}>
+          <FontAwesomeIcon icon={faExpand} />
+        </div>
+        <div className={styles.closeBtn} onClick={() => handleClose()}>
+          <CloseBtn isOpen={isOpen} />
+        </div>
       </div>
-      <h3 className={styles.readMeTitle}>Project Overview</h3>
-      <div className={styles.badgeList}>{renderBadges(item.badges)}</div>
-      <div className={styles.description}>
-        {renderDescription(item.overView)}
+      <div className={styles.content}>
+        <div className={styles.badgeList}>{renderBadges(item.badges)}</div>
+        <div className={styles.description}>
+          {renderDescription(item.overView)}
+        </div>
       </div>
     </div>
   );
