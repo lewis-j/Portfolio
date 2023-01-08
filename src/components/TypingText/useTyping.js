@@ -61,7 +61,6 @@ const useTyping = (textList, typeSetting, eraseSetting, isCycling) => {
     if (!isCycling) {
       clearTimeout(timeoutId);
       erase(currentText.length, currentWordIndex);
-      console.log("isCycling", isCycling);
     }
     return () => {
       clearTimeout(timeoutId);

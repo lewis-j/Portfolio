@@ -17,6 +17,7 @@ import {
 } from "../../assets/data/aboutContent";
 import useScroll from "../../hooks/useScroll";
 import { DescriptionList, Tabs } from "../../components";
+import OverlaySlideCards from "../../components/OverlaySlideCards/OverlaySlideCards";
 
 const About = ({ offsetSegments }) => {
   const { setIsDark } = useThemeContext();
@@ -31,36 +32,6 @@ const About = ({ offsetSegments }) => {
   }, []);
 
   const handleDownload = () => downloadFile("Lindsey_Jackson_Resume.pdf");
-
-  const renderSlides = (...slides) => {
-    console.log("slide", slide);
-    return slides.map((item, idx) => {
-      //https://stackoverflow.com/questions/10247255/css-transition-between-left-right-and-top-bottom-positions
-      const style = {
-        left: "0",
-        transform: "translateX(0)",
-        zIndex: 100,
-      };
-      if (slide === idx) style.zIndex = 112;
-      if (slide + 1 === idx) style.zIndex = 110;
-
-      if (!isIncrementing) {
-        if (slide === idx) style.zIndex = 110;
-        if (slide + 1 === idx) style.zIndex = 112;
-        if (slide + 2 === idx) style.zIndex = 111;
-      }
-
-      if (slide < idx) {
-        style.transform = "translateX(-100%)";
-        style.left = "100%";
-      }
-      return (
-        <section className={`${styles.section}`} key={idx + item} style={style}>
-          {item}
-        </section>
-      );
-    });
-  };
 
   const AboutImg = () => (
     <div className={styles.aboutImg}>
@@ -107,29 +78,31 @@ const About = ({ offsetSegments }) => {
     </div>
   );
 
+  const slides = [
+    <AboutImg />,
+    <AboutMe />,
+    <ListItems
+      title="PROMINENT SKILLS"
+      list={skillsList}
+      className={appendStyles(styles.skills, styles.boxSection)}
+    />,
+    <ListItems
+      title="Frameworks and Libraries"
+      list={frameworksAndLibraries.map((item) => item.join(", "))}
+      className={appendStyles(styles.frameworksAndLibraries, styles.boxSection)}
+    />,
+    <Contact />,
+  ];
+
   return (
     <div className={styles.container}>
       <div className={styles.background}></div>
-      <div className={styles.slidingSections}>
-        {renderSlides(
-          <AboutImg />,
-          <AboutMe />,
-          <ListItems
-            title="PROMINENT SKILLS"
-            list={skillsList}
-            className={appendStyles(styles.skills, styles.boxSection)}
-          />,
-          <ListItems
-            title="Frameworks and Libraries"
-            list={frameworksAndLibraries.map((item) => item.join(", "))}
-            className={appendStyles(
-              styles.frameworksAndLibraries,
-              styles.boxSection
-            )}
-          />,
-          <Contact />
-        )}
-      </div>
+      <OverlaySlideCards
+        slides={slides}
+        slide={slide}
+        isIncrementing={isIncrementing}
+        className={styles.expand}
+      />
       <div className={styles.resume} onClick={() => handleDownload()}>
         <FontAwesomeIcon icon={faDownload} />
         <h4>Resume</h4>

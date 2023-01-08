@@ -33,22 +33,9 @@
   animation: expand 0.5s ease-in-out 0.2s forwards;
 }
 
-.slidingSections {
-  position: relative;
-  height: var(--slide-containers);
-  width: calc((var(--slide-containers) * 2) + var(--slide-containers-gap));
-  margin: 0px auto;
+.expand {
   transform: scale(0);
   animation: expand 0.25s ease-in-out 1s forwards;
-}
-
-.section {
-  position: absolute;
-  width: var(--slide-containers);
-  height: var(--slide-containers);
-  top: 0;
-  color: white;
-  transition: transform 1s, left 1s;
 }
 
 .aboutImg img {
@@ -165,5 +152,12 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .background::before {
+    width: 200vw;
+    height: 250vw;
   }
 }
