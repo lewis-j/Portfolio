@@ -31,7 +31,9 @@ const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
         <TitleBrand className={styles.logo} title="Lindsey Jackson" />
         <div className={styles.children}>{children}</div>
         <Footer navLinks={navLinks} isCyclingText={isCyclingText} />
-        <TypingText textList={cyclingText} />
+        <div className={styles.typingText}>
+          <TypingText textList={cyclingText} />
+        </div>
       </div>
     </div>
   );

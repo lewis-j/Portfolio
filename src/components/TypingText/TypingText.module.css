@@ -1,6 +1,22 @@
+.container,
+.text {
+  position: relative;
+}
 .container {
-  display: flex;
-  height: 1rem;
+  height: 100%;
+}
+
+.dark span:nth-child(1) {
+  color: var(--darkThemeColor);
+}
+.dark span:nth-child(2) {
+  background-color: var(--darkThemeColor);
+}
+.light span:nth-child(1) {
+  color: var(--lightThemeColor);
+}
+.light span:nth-child(2) {
+  background-color: var(--lightThemeColor);
 }
 
 .text {
@@ -10,29 +26,30 @@
 }
 
 .cursor {
-  height: 100%;
+  position: absolute;
+  height: 1.2em;
   background-color: black;
   width: 3px;
 }
 
 .blink {
-  animation: blink 1s infinite;
+  animation: blink 0.75s infinite;
 }
 
 @keyframes blink {
   0% {
-    background-color: black;
+    opacity: 1;
   }
   49% {
-    background-color: black;
+    opacity: 1;
   }
   50% {
-    background-color: transparent;
+    opacity: 0;
   }
   99% {
-    background-color: transparent;
+    opacity: 0;
   }
   100% {
-    background-color: black;
+    opacity: 1;
   }
 }

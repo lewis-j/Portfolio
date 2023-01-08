@@ -199,6 +199,6 @@
   }
 
   .profileOffset {
-    transform: translateX(0);
+    transform: translate(0px, 90px);
   }
 }

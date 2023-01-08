@@ -1,71 +1,23 @@
 import { useState, useEffect } from "react";
+import { useThemeContext } from "../../context/ThemeContext/Theme";
 import styles from "./TypingText.module.css";
+import useTyping from "./useTyping";
+import { appendStyles } from "../../util";
 
 const TypingText = ({ textList }) => {
-  const typeSpeed = 150;
-  const eraseSpeed = 100;
-  const newTextdelay = 1000;
-  const eraseDelay = 2000;
+  const type = { speed: 150, delay: 1000 };
+  const erase = { speed: 100, delay: 2000 };
+  const { isDark } = useThemeContext();
+  const { isTyping, text } = useTyping(textList, type, erase);
 
-  const [currentText, setText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
-  const [timeoutId, setTimoutId] = useState();
-
-  const erase = (index, wordIndex) => {
-    setIsTyping(true);
-    const word = textList[wordIndex];
-    if (index === 0) {
-      setIsTyping(false);
-      const nextWordIndex =
-        textList.length - 1 === wordIndex ? 0 : wordIndex + 1;
-      const timeoutId = setTimeout(() => {
-        type(0, nextWordIndex);
-      }, newTextdelay);
-      setTimoutId(timeoutId);
-    } else {
-      const timeoutId = setTimeout(() => {
-        setText(word.slice(0, index - 1));
-        erase(index - 1, wordIndex);
-      }, eraseSpeed);
-      setTimoutId(timeoutId);
-    }
-  };
-
-  const type = (index = 0, wordIndex = 0) => {
-    setIsTyping(true);
-    const word = textList[wordIndex];
-    if (index === word.length) {
-      setIsTyping(false);
-      const timeoutId = setTimeout(() => {
-        erase(index, wordIndex);
-      }, eraseDelay);
-      setTimoutId(timeoutId);
-    } else {
-      setText((prev) => prev + word.charAt(index));
-      const timeoutId = setTimeout(() => {
-        type(index + 1, wordIndex);
-      }, typeSpeed);
-      setTimoutId(timeoutId);
-    }
-  };
-
-  useEffect(() => {
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [timeoutId]);
-
-  useEffect(() => {
-    type();
-    return () => {};
-  }, []);
+  const themeClass = isDark ? styles.dark : styles.light;
 
   const cursorClassName = isTyping
     ? styles.cursor
     : `${styles.cursor} ${styles.blink}`;
   return (
-    <div className={styles.container}>
-      <span className={styles.text}>{currentText}</span>
+    <div className={appendStyles(styles.container, themeClass)}>
+      <span className={styles.text}>Full-Stack</span>
       <span className={cursorClassName} />
     </div>
   );

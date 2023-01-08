@@ -215,9 +215,6 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
       );
     });
   };
-  const offsetProfilePic = {
-    transform: "translateX(25vh)",
-  };
 
   const flipCardClass =
     slide === 0

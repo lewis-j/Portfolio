@@ -1,6 +1,6 @@
 import { appendStyles } from "../../util";
 import styles from "./HeaderNav.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TitleBrand } from "../../components";
 import { useThemeContext } from "../../context/ThemeContext/Theme";
 import { Nav } from "../Footer/layout/Nav/Nav";
@@ -9,6 +9,14 @@ import { SocialLinks } from "../Footer/layout/SocialLinks/SocialLinks";
 const HeaderNav = ({ navLinks }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { isDark } = useThemeContext();
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [isOpen]);
 
   const menuBtnStyle = isOpen
     ? appendStyles(styles.hamburgerMenu, styles.open)
