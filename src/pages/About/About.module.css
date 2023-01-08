@@ -26,7 +26,7 @@
   width: 200vw;
   height: 200vw;
   transform: scale(0);
-  background-image: url("../../assets/img/space.jpg");
+  background-image: url("../../assets/img/space_dark.jpg");
   background-size: contain;
   border-radius: 50%;
   filter: grayscale(1);
