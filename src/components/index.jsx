@@ -8,3 +8,4 @@ export { default as CloseBtn } from "./CloseBtn/CloseBtn";
 export { default as TypingText } from "./TypingText/TypingText";
 export { default as DescriptionList } from "./DescriptionList/DescriptionList";
 export { default as TitleBrand } from "./TitleBrand/TitleBrand";
+export { default as ReadMe } from "./ReadMe/ReadMe";

@@ -60,57 +60,6 @@
   transform: scale(1.1);
 }
 
-.readMe {
-  overflow: auto;
-  overscroll-behavior: contain;
-  position: relative;
-  padding: 1em;
-  background-color: var(--darkThemeColor);
-  height: 100%;
-  width: 110%;
-  border: var(--darkThemeColor);
-  box-shadow: inset 0 0 5px var(--lightThemeColor);
-  border-radius: var(--borderRadius);
-}
-
-.readMe::-webkit-scrollbar {
-  background-color: white;
-}
-.readMe::-webkit-scrollbar-thumb {
-  background-color: black;
-  color: white;
-  border-radius: 15px;
-  box-shadow: inset 1px 1px 4px 1px rgb(255, 255, 255);
-}
-.readMe::-webkit-scrollbar-track {
-  background-color: rgb(255, 255, 255);
-}
-.readMeTitle {
-  letter-spacing: var(--letter-spacing-small);
-}
-.badgeList {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 2px;
-}
-.badge {
-  padding: 0px 5px;
-  letter-spacing: 1px;
-  background-color: var(--lightThemeColor);
-  color: var(--darkThemeColor);
-  border-radius: var(--borderRadius);
-}
-
-.closeBtn {
-  position: absolute;
-  right: 0.5em;
-  top: 0.5em;
-}
-
-.description {
-  white-space: pre-wrap;
-}
-
 .flipCardImg {
   border-radius: 5px;
   border: var(--neon-border);

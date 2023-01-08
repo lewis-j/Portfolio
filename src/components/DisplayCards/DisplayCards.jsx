@@ -1,7 +1,7 @@
 import styles from "./DisplayCards.module.css";
 import profile from ".././../assets/img/about_portrait.jpg";
 import { useNavigate } from "../../lib/router/Router";
-import { appendStyles, convertMarkDownToJsxLinks } from "../../util";
+import { appendStyles } from "../../util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReadme, faSquareGithub } from "@fortawesome/free-brands-svg-icons";
 import {
@@ -9,10 +9,8 @@ import {
   faCircleRight,
   faLink,
 } from "@fortawesome/free-solid-svg-icons";
-import FlipCarousel from "../FlipCarousel/FlipCarousel";
 import { useState, useLayoutEffect } from "react";
-import { FlipCard } from "../FlipCard";
-import CloseBtn from "../CloseBtn/CloseBtn";
+import { ReadMe, FlipCard, FlipCarousel } from "../../components";
 
 const DisplayCards = ({ slide, slides, isIncrementing }) => {
   const navigate = useNavigate();
@@ -133,16 +131,6 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
     return renderCard;
   };
 
-  const renderBadges = (badgeList) =>
-    badgeList.map((badge, index) => (
-      <span
-        key={`${badge}${index}${Math.random() * index}`}
-        className={styles.badge}
-      >
-        {badge}
-      </span>
-    ));
-
   const renderSlides = () => {
     return slides.map((project, index) => {
       const shadowClassName = index === 0 ? styles.boxShadow : "";
@@ -165,30 +153,16 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           />
         );
       };
-      const renderDescription = (overView) => {
-        if (!overView) return null;
-        return overView.map(({ title, text }, idx) => (
-          <div key={idx + title}>
-            <h3 className={styles.overViewTitle}>{title}</h3>
-            <div className={styles.overViewContent}>
-              {convertMarkDownToJsxLinks(text)}
-            </div>
-          </div>
-        ));
-      };
 
-      const readMe = (
-        <div className={styles.readMe}>
-          <div className={styles.closeBtn} onClick={() => setIsReadMe(false)}>
-            <CloseBtn isOpen={isReadMe} />
-          </div>
-          <h3 className={styles.readMeTitle}>Project Overview</h3>
-          <div className={styles.badgeList}>{renderBadges(project.badges)}</div>
-          <div className={styles.description}>
-            {renderDescription(project.overView)}
-          </div>
-        </div>
-      );
+      const renderReadMe = (project) => {
+        return (
+          <ReadMe
+            isOpem={isReadMe}
+            handleClose={() => setIsReadMe(false)}
+            item={project}
+          />
+        );
+      };
       return (
         <div
           style={style}
@@ -206,7 +180,7 @@ const DisplayCards = ({ slide, slides, isIncrementing }) => {
           <FlipCard
             className={styles.projects}
             front={renderFlipCarousel()}
-            back={readMe}
+            back={renderReadMe(project)}
             // isBack={isReadMe}
             index={+isReadMe}
             flipX={true}

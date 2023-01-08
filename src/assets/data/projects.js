@@ -58,7 +58,6 @@ const overViews = [
       },
     ],
   },
-  // { title: "3D quiz", overView: "test" },
 ];
 
 const projects = [
@@ -118,14 +117,6 @@ const projects = [
     content: "my video",
     imgs: portfolio,
     github: "https://github.com/lewis-j/Portfolio",
-    url: "https://lindseyjackson.onrender.com",
-  },
-  {
-    title: "3D quiz",
-    content: "my video",
-    badges: [],
-    imgs: koana,
-    github: null,
     url: "https://lindseyjackson.onrender.com",
   },
 ];
