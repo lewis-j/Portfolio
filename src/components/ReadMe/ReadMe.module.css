@@ -57,6 +57,25 @@
   letter-spacing: var(--letter-spacing-small);
 }
 
+.btns {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.expandBtn {
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.expandBtn:hover {
+  transform: scale(1.1);
+}
+
+.closeBtn {
+  padding-right: 0.5em;
+}
+
 .content {
   position: relative;
   box-sizing: border-box;
@@ -79,10 +98,6 @@
   background-color: var(--lightThemeColor);
   color: var(--darkThemeColor);
   border-radius: var(--borderRadius);
-}
-
-.closeBtn {
-  padding-right: 0.5em;
 }
 
 .description {

@@ -34,17 +34,22 @@ const ReadMe = ({ isOpen, handleClose, item }) => {
     <>
       <div className={styles.header}>
         <h3 className={styles.title}>Project Overview</h3>
-        <div className={styles.expand} onClick={() => setExpanded(!isExpanded)}>
-          <FontAwesomeIcon icon={faExpand} />
-        </div>
-        <div
-          className={styles.closeBtn}
-          onClick={() => {
-            if (isExpanded) setExpanded(false);
-            handleClose();
-          }}
-        >
-          <CloseBtn isOpen={isOpen} />
+        <div className={styles.btns}>
+          <div
+            className={styles.expandBtn}
+            onClick={() => setExpanded(!isExpanded)}
+          >
+            <FontAwesomeIcon icon={faExpand} />
+          </div>
+          <div
+            className={styles.closeBtn}
+            onClick={() => {
+              if (isExpanded) setExpanded(false);
+              handleClose();
+            }}
+          >
+            <CloseBtn isOpen={isOpen} />
+          </div>
         </div>
       </div>
       <div className={styles.content}>
