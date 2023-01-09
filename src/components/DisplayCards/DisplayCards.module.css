@@ -104,6 +104,10 @@
   bottom: 1em;
   cursor: pointer;
 }
+.slideImgArrowLeft:hover,
+.slideImgArrowRight:hover {
+  transform: scale(1.1);
+}
 
 .slideImgArrowLeft {
   left: 1em;

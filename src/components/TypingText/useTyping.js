@@ -34,7 +34,6 @@ const useTyping = (textList, typeSetting, eraseSetting, isCycling) => {
     setIsTyping(true);
 
     const word = isCycling ? textList[wordIndex] : textList[0];
-    console.log("word", word, isCycling);
     if (index === word.length) {
       setIsTyping(false);
       if (!isCycling) return;
@@ -58,19 +57,20 @@ const useTyping = (textList, typeSetting, eraseSetting, isCycling) => {
   }, [timeoutId]);
 
   useEffect(() => {
-    if (!isCycling) {
+    if (timeoutId) {
       clearTimeout(timeoutId);
-      erase(currentText.length, currentWordIndex);
+      const wordIndex = !isCycling ? currentWordIndex : 0;
+      console.log("useEffect", textList[wordIndex], wordIndex);
+      erase(currentText.length, wordIndex);
+    } else {
+      type();
     }
+
     return () => {
       clearTimeout(timeoutId);
     };
   }, [isCycling]);
 
-  useEffect(() => {
-    type();
-    return () => {};
-  }, []);
   return { isTyping, text: currentText };
 };
 
