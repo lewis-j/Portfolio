@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ReadMe.module.css";
 import CloseBtn from "../CloseBtn/CloseBtn";
-import { convertMarkDownToJsxLinks } from "../../util";
+import { appendStyles, convertMarkDownToJsxLinks } from "../../util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExpand } from "@fortawesome/free-solid-svg-icons";
+import Modal from "../Modal/Modal";
 
 const ReadMe = ({ isOpen, handleClose, item }) => {
+  const [isExpanded, setExpanded] = useState(false);
   const renderBadges = (badgeList) =>
     badgeList.map((badge, index) => (
       <span
@@ -28,14 +30,20 @@ const ReadMe = ({ isOpen, handleClose, item }) => {
     ));
   };
 
-  return (
-    <div className={styles.container}>
+  const renderReadMe = () => (
+    <>
       <div className={styles.header}>
         <h3 className={styles.title}>Project Overview</h3>
-        <div className={styles.expand}>
+        <div className={styles.expand} onClick={() => setExpanded(!isExpanded)}>
           <FontAwesomeIcon icon={faExpand} />
         </div>
-        <div className={styles.closeBtn} onClick={() => handleClose()}>
+        <div
+          className={styles.closeBtn}
+          onClick={() => {
+            if (isExpanded) setExpanded(false);
+            handleClose();
+          }}
+        >
           <CloseBtn isOpen={isOpen} />
         </div>
       </div>
@@ -45,6 +53,21 @@ const ReadMe = ({ isOpen, handleClose, item }) => {
           {renderDescription(item.overView)}
         </div>
       </div>
+    </>
+  );
+
+  if (isExpanded)
+    return (
+      <Modal>
+        <div className={appendStyles(styles.container, styles.modalContainer)}>
+          {renderReadMe()}
+        </div>
+      </Modal>
+    );
+
+  return (
+    <div className={appendStyles(styles.container, styles.smallContainer)}>
+      {renderReadMe()}
     </div>
   );
 };

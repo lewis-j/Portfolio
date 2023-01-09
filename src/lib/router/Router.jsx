@@ -9,7 +9,6 @@ const Router = ({ children }) => {
     window.addEventListener("navigate", onLocationChange);
     return () => window.removeEventListener("navigate", onLocationChange);
   }, []);
-
   return (
     <RouterContext.Provider value={{ route }}>
       {children}
@@ -21,7 +20,6 @@ const useRouter = () => useContext(RouterContext);
 
 const Route = ({ to, component, children }) => {
   const { route } = useRouter();
-  console.log("route", route);
   return to === route ? component || children : null;
 };
 

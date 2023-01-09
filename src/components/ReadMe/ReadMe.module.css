@@ -3,16 +3,28 @@
   --header-height: 3em;
   --container-size: calc(100% + var(--added-width));
 }
-.container {
-  position: relative;
+.smallContainer {
   height: var(--container-size);
   width: var(--container-size);
-  border: var(--darkThemeColor);
-  border-radius: var(--borderRadius);
   transform: translate(
     calc(var(--added-width) / -2),
     calc(var(--added-width) / -2)
   );
+}
+
+.modalContainer {
+  width: 100%;
+  max-width: 60em;
+  height: 100%;
+}
+
+.modalContainer .header {
+  background-color: black;
+}
+.container {
+  position: relative;
+  border: var(--darkThemeColor);
+  border-radius: var(--borderRadius);
 }
 .container::-webkit-scrollbar {
   background-color: white;

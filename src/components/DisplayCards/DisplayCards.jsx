@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useLayoutEffect } from "react";
 import { ReadMe, FlipCard, FlipCarousel } from "../../components";
+import Modal from "../Modal/Modal";
 
 const DisplayCards = ({ slide, slides, isIncrementing }) => {
   const navigate = useNavigate();
