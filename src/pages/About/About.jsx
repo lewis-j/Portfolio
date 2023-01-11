@@ -79,6 +79,7 @@ const About = ({ offsetSegments }) => {
   );
 
   const slides = [
+    /* eslint-disable react/jsx-key */
     <AboutImg />,
     <AboutMe />,
     <ListItems

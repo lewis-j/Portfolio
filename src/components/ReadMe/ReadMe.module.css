@@ -12,11 +12,11 @@
   );
 }
 
-.modalContainer {
+/* .modalContainer {
   width: 100%;
   max-width: 60em;
   height: 100%;
-}
+} */
 
 .modalContainer .header {
   background-color: black;

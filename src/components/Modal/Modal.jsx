@@ -1,8 +1,9 @@
 import { useLayoutEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { appendStyles } from "../../util";
 import styles from "./Modal.module.css";
 
-const Modal = ({ children }) => {
+const Modal = ({ children, className }) => {
   const [wrapperEl, setWrapper] = useState();
   useLayoutEffect(() => {
     document.body.style.overflow = "hidden";
@@ -17,7 +18,13 @@ const Modal = ({ children }) => {
       document.body.style.overflow = "visible";
     };
   }, []);
-  if (wrapperEl) return createPortal(children, wrapperEl);
+  if (wrapperEl)
+    return createPortal(
+      <div className={appendStyles(styles.container, className)}>
+        {children}
+      </div>,
+      wrapperEl
+    );
   return null;
 };
 
