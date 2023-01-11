@@ -1,4 +1,3 @@
-import { appendStyles } from "../../util";
 import Footer from "../../layout/Footer/Footer";
 import styles from "./Layout.module.css";
 import { useRouter } from "../../lib/router/Router";
@@ -8,7 +7,7 @@ import { TitleBrand, TypingText } from "../../components";
 import { cyclingText } from "../../assets";
 
 const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
-  const { transitionClass, isDark } = useThemeContext();
+  const { isDark } = useThemeContext();
   const { route } = useRouter();
 
   return (
