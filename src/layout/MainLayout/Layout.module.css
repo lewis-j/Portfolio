@@ -48,8 +48,4 @@
   .children {
     height: 100%;
   }
-
-  .typingText {
-    transform: translateY(-30vh);
-  }
 }
