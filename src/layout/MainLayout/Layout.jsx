@@ -25,7 +25,7 @@ const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
             className={styles.slidingBackground}
             style={
               isDark
-                ? { transform: "translateX(-100vw)", opacity: "1" }
+                ? { transform: "translateX(-150vw)", opacity: "1" }
                 : { opacity: "0" }
             }
           ></div>

@@ -16,15 +16,16 @@
 }
 .slidingBackground {
   position: absolute;
-  width: 100%;
+  width: 150vw;
   height: 100%;
-  right: -100vw;
+  right: -150vw;
   transition: transform 2s, opacity 0.5s;
   background-color: var(--lightThemeColor);
   background-image: url("../../assets/img/space_dark.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   filter: grayscale(100%);
+  clip-path: polygon(33% 0, 100% 0, 100% 100%, 33% 100%, 0 50%);
 }
 .logo {
   font-size: 36px;
