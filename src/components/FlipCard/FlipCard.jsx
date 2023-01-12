@@ -14,8 +14,8 @@ const FlipCard = ({
       transform: `rotate${axis}(${deg}deg)`,
     });
     const axis = flipX ? "X" : "Y";
-    const front = transform(axis, index * 180);
-    const back = transform(axis, (index + 1) * 180);
+    const front = transform(axis, index * -180);
+    const back = transform(axis, (index + 1) * -180);
     return [front, back];
   };
   const [frontRotation, backRotation] = getRotations(index);
