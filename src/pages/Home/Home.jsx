@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { DisplayCards, Tabs } from "../../components";
 import { useThemeContext } from "../../context/ThemeContext/Theme";
 import projects from "../../assets/data/projects";

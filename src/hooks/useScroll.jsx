@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useScroll = (length, offsetSegments) => {
-  const [isIncrementing, setIsIncrementing] = useState(true);
+  const [isIncrementing, setIsIncrementing] = useState(false);
   const [slide, setSlide] = useState(0);
 
   const _handleScroll = () => {
