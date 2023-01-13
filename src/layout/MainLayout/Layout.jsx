@@ -5,9 +5,7 @@ import { useThemeContext } from "../../context/ThemeContext/Theme";
 import HeaderNav from "../HeaderNav/HeaderNav";
 import { TitleBrand, TypingText } from "../../components";
 import { cyclingText } from "../../assets";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { appendStyles } from "../../util";
+import DownIndicator from "../../components/DownIndicator/DownIndicator";
 
 const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
   const { isDark } = useThemeContext();
@@ -32,13 +30,8 @@ const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
         )}
         <TitleBrand className={styles.logo} title="Lindsey Jackson" />
         <div className={styles.children}>
-          <div
-            className={appendStyles(
-              styles.scrollIndicator,
-              styles.scrollIndicating
-            )}
-          >
-            Scroll Down <FontAwesomeIcon icon={faArrowDown} />
+          <div className={styles.scrollIndicator}>
+            <DownIndicator title="Scroll Down" />
           </div>
           {children}
         </div>

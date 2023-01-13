@@ -1,0 +1,54 @@
+.container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-family: "Questrial";
+  /* opacity: 0; */
+  color: var(--secondaryHighlightColor);
+}
+
+.downAngles {
+  display: flex;
+  flex-direction: column;
+}
+
+:root {
+  --animationDuration: 1s;
+}
+
+.angle:nth-child(1) {
+  opacity: 0;
+  animation: fadeinOut ease forwards;
+  animation-duration: var(--animationDuration);
+}
+.angle:nth-child(2) {
+  opacity: 0;
+  animation: fadeinOut ease forwards;
+  animation-duration: var(--animationDuration);
+  transform: translateY(-65%);
+  animation-delay: 0.25s;
+}
+.angle:nth-child(3) {
+  opacity: 0;
+  animation: fadeinOut 1s ease forwards;
+  animation-duration: var(--animationDuration);
+  transform: translateY(-130%);
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeinOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

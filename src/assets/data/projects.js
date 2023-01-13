@@ -54,7 +54,11 @@ const overViews = [
     overView: [
       {
         title: "About",
-        text: "text",
+        text: "This website is a Portfolio I created to display my most notable projects. I envisioned a fixed layout leveraging the scroll bar to move components. I wanted the users to move through the website traditionally yet still have the fixed layout components displayed nicely. A horizontal scroll would be a way to achieve this. I had the scroll run animations for a given slide based on the page offset, as I wanted to provide a more visually appealing effect than a simple scroll effect. ",
+      },
+      {
+        title: "Code Review",
+        text: "As a personal challenge to myself, I wanted to create this portfolio with the least amount of dependencies possible. I did bootstrap this project using Vite, but besides the FontAwesome ReactJS component, I did not install any additional libraries in its current iteration. Instead of using ReactSpring or FramerMotion, all the animation components use keyframes, transitions, transforms, and react state management. Instead of using React Router, I created a custom router using React's createContext to pass a custom navigate method to my components. I did this to understand better what these 3rd party libraries may be doing underneath. ",
       },
     ],
   },
