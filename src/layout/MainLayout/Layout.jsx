@@ -35,7 +35,7 @@ const Layout = ({ children, containerHeight, navLinks, isCyclingText }) => {
           </div>
           {children}
         </div>
-        <Footer navLinks={navLinks} isCyclingText={isCyclingText} />
+        <Footer navLinks={navLinks} />
         <div className={styles.typingText}>
           <TypingText textList={cyclingText} isCyclingText={isCyclingText} />
         </div>

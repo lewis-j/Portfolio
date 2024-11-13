@@ -4,7 +4,7 @@ import "./styles/variables.css";
 import Layout from "./layout/MainLayout/Layout";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
-import { Router, Route, useNavigate, useRouter } from "./lib/router/Router";
+import { Router, Route, useNavigate } from "./lib/router/Router";
 import { useThemeContext } from "./context/ThemeContext/Theme";
 import { useState } from "react";
 
@@ -15,7 +15,6 @@ function App() {
   const offsetSegments = 500;
   const projectScrollHeight = offsetSegments * projects.length + 1;
   const aboutScrollHeight = offsetSegments * 4;
-  const { route } = useRouter();
   const [layoutHeight, setHeight] = useState(projectScrollHeight);
 
   const navLinks = [
@@ -54,7 +53,7 @@ function App() {
         <Layout
           containerHeight={layoutHeight}
           navLinks={navLinks}
-          isCyclingText={window.pageYOffset < offsetSegments && route === "/"}
+          isCyclingText={window.scrollY < offsetSegments}
         >
           <Route
             to="/"

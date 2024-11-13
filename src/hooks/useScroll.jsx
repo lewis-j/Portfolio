@@ -5,7 +5,7 @@ const useScroll = (length, offsetSegments) => {
   const [slide, setSlide] = useState(0);
 
   const _handleScroll = () => {
-    const offset = window.pageYOffset;
+    const offset = window.scrollY;
     [...Array(length).keys()].forEach((_, index) => {
       const lowRange = index * offsetSegments;
       const highRange = lowRange + offsetSegments;

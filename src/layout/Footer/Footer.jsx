@@ -3,7 +3,7 @@ import { SocialLinks } from "./layout/SocialLinks/SocialLinks";
 import styles from "./Footer.module.css";
 import { Nav } from "./layout/Nav/Nav";
 
-const Footer = ({ navLinks, isCyclingText }) => {
+const Footer = ({ navLinks }) => {
   return (
     <div className={styles.footer}>
       <Nav navLinks={navLinks} className={styles.nav} />

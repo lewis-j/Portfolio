@@ -1,4 +1,10 @@
-import { pitchapp, koana, portfolio, paperback } from "../img/projects";
+import {
+  pitchapp,
+  koana,
+  portfolio,
+  paperback,
+  microsoft_sublist,
+} from "../img/projects";
 
 const overViews = [
   {
@@ -98,6 +104,21 @@ const projects = [
     imgs: paperback,
     github: "https://github.com/lewis-j/Paper-back-pals-front-end",
     url: "https://www.paperbackpals.app/",
+  },
+  {
+    title: "Microsoft Sublist",
+    badges: [
+      "ReactJS",
+      "TailwindCSS",
+      "Express",
+      "NodeJS",
+      "MongoDB",
+      "Mongoose",
+    ],
+    content: "my video",
+    imgs: microsoft_sublist,
+    github: null,
+    url: "https://mtodo-utility.netlify.app/",
   },
   {
     title: "Pitch Tracker",

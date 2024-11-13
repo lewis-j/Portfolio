@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useThemeContext } from "../../context/ThemeContext/Theme";
 import styles from "./TypingText.module.css";
 import useTyping from "./useTyping";
@@ -8,6 +7,7 @@ const TypingText = ({ textList, isCyclingText }) => {
   const type = { speed: 150, delay: 1000 };
   const erase = { speed: 100, delay: 2000 };
   const { isDark } = useThemeContext();
+
   const { isTyping, text } = useTyping(textList, type, erase, isCyclingText);
 
   const themeClass = isDark ? styles.dark : styles.light;
